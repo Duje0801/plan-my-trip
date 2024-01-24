@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import countriesList from "../data/countriesList.json";
-import { ICountryCode } from "../interfaces/countryCode";
+import { ICountryCode } from "../interfaces/forFunctions/countryCode";
 
 export default function search(req: Request, res: Response) {
   const params: string = req.params.id;
