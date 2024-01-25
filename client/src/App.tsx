@@ -1,16 +1,28 @@
-import TopMenu from "./components/home/topMenu";
-import Middle from "./components/home/middle";
-import video from "./img/video.mp4";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Home from "./pages/home";
+import Trip from "./pages/trip";
+import { routes } from "./routes/routes";
 
 function App(): JSX.Element {
+  const router = createBrowserRouter([
+    {
+      path: routes.home,
+      element: <Home />,
+    },
+    {
+      path: routes.trip,
+      element: <Trip />,
+    },
+    {
+      path: `*`,
+      element: <Home />,
+    },
+  ]);
+
   return (
-    <div className="hero max-h-screen max-w-screen relative">
-      <video className="h-[100vh] w-[100vw] object-cover" autoPlay loop muted>
-        <source src={video} type="video/mp4" />
-      </video>
-      <TopMenu />
-      <Middle />
-    </div>
+    <>
+      <RouterProvider router={router} />
+    </>
   );
 }
 

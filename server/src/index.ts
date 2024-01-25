@@ -4,7 +4,7 @@ import cors from "cors";
 
 //Routes imports
 import search from "./controller/search";
-import results from "./controller/results";
+import trip from "./controller/trip";
 
 const app = express();
 app.use(express.json());
@@ -14,7 +14,7 @@ dotenv.config();
 
 //Routes
 app.get(`/api/search/:id`, search);
-app.get(`/api/info/`, results);
+app.get(`/api/trip/`, trip);
 
 //Server
 const PORT = process.env.PORT;

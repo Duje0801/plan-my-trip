@@ -1,27 +1,26 @@
 import { useState, Dispatch, SetStateAction, useEffect } from "react";
-import { Country } from "../../interfaces/country";
+import { CountryCode } from "../../interfaces/countryCode";
+import { useAppContext } from "../../context/context";
 
 interface Props {
-  inputText: string;
-  countriesList: Country[];
-  setInputText: Dispatch<SetStateAction<string>>;
+  countriesList: CountryCode[];
   setSelectedCountry: Dispatch<SetStateAction<string>>;
 }
 
 export default function SearchResults({
-  inputText,
   countriesList,
-  setInputText,
   setSelectedCountry,
 }: Props): JSX.Element {
   const [searchPage, setSearchPage] = useState<number>(1);
 
+  const { state, dispatch } = useAppContext();
+
   useEffect(() => {
     setSearchPage(1);
-  }, [inputText]);
+  }, [state.inputText]);
 
-  const handleClick = (country: Country) => {
-    setInputText(country.name);
+  const handleClick = (country: CountryCode) => {
+    dispatch({ type: "SET_INPUT_TEXT", payload: country.name });
     setSelectedCountry(country.name);
   };
 
@@ -44,12 +43,12 @@ export default function SearchResults({
           return (
             <div
               onClick={(e) => handleClick(country)}
-              className="btn join-item w-48 bg-slate-100 animate-none"
+              className="btn join-item w-48 text-slate-700 bg-slate-100 animate-none"
               key={i}
             >
-              {country.name.length < 30
+              {country.name.length < 20
                 ? country.name
-                : country.name.substring(0, 30) + "..."}
+                : country.name.substring(0, 19) + "..."}
             </div>
           );
         else return;

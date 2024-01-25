@@ -16,7 +16,7 @@ import { ICountryDataFun } from "../interfaces/forFunctions/countryDataFun";
 import dotenv from "dotenv";
 dotenv.config();
 
-export default async function results(req: Request, res: Response) {
+export default async function trip(req: Request, res: Response) {
   try {
     const country: string = String(req.query.country);
     const days: number = Number(req.query.days);
@@ -51,9 +51,11 @@ export default async function results(req: Request, res: Response) {
     //Response
     res.json({
       status: `success`,
-      countryData: countryData.data,
-      itinerary,
-      pictures,
+      data: {
+        info: countryData.data,
+        itinerary,
+        pictures,
+      },
     });
   } catch (error: any) {
     let errorObj = {};
@@ -64,7 +66,7 @@ export default async function results(req: Request, res: Response) {
         error.message === "Allowed days number is between 2 and 31" ||
         error.message === "Can't find country in database."
       )
-        errorObj = error.message;
+        errorObj = { message: error.message };
       else
         errorObj = {
           message: "Can't create itinerary. Please try again later.",
@@ -73,7 +75,7 @@ export default async function results(req: Request, res: Response) {
     //Error handling if we are in development mode
     else {
       errorObj = {
-        error: error.message,
+        message: error.message,
         stack: error.stack,
         name: error.name,
       };

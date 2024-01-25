@@ -5,7 +5,7 @@ export default function Middle(): JSX.Element {
   return (
     <div className="hero-content text-center flex flex-col gap-4 text-neutral-content w-fit">
       <Title />
-      <Form />{" "}
+      <Form />
     </div>
   );
 }
