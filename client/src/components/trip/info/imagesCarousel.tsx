@@ -4,7 +4,7 @@ function ImagesCarousel(): JSX.Element {
   const { state } = useAppContext();
 
   return (
-    <div className="carousel mx-4 mb-4 h-[33vh] rounded-lg">
+    <section className="carousel mx-4 mb-4 h-[33vh] rounded-lg">
       {state.data?.photo.map((photo, i) => {
         return (
           <div
@@ -17,7 +17,7 @@ function ImagesCarousel(): JSX.Element {
           </div>
         );
       })}
-    </div>
+    </section>
   );
 }
 

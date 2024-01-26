@@ -1,21 +1,35 @@
 import { useAppContext } from "../context/context";
+import { CoordsAndZoom } from "../interfaces/coordsAndZoom";
 
-function MapCentering(): [number, number] {
+function MapCentering(): CoordsAndZoom {
   const { state } = useAppContext();
 
-  let allCoordinatesSum: [number, number] = [0, 0];
+  let avgCoordinates: [number, number] = [0, 0];
+  let allLat: number[] = [];
+  let zoom: number = 0;
 
   state.data?.itinerary.trip.forEach((day) => {
-    allCoordinatesSum[0] += day.coordinates[0];
-    allCoordinatesSum[1] += day.coordinates[1];
+    avgCoordinates[0] += day.coordinates[0];
+    avgCoordinates[1] += day.coordinates[1];
   });
 
-  allCoordinatesSum[0] =
-    allCoordinatesSum[0] / state.data?.itinerary.trip.length!;
-  allCoordinatesSum[1] =
-    allCoordinatesSum[1] / state.data?.itinerary.trip.length!;
+  avgCoordinates[0] = avgCoordinates[0] / state.data?.itinerary.trip.length!;
+  avgCoordinates[1] = avgCoordinates[1] / state.data?.itinerary.trip.length!;
 
-  return allCoordinatesSum;
+  state.data?.itinerary.trip.forEach((day) => {
+    allLat.push(day.coordinates[1]);
+  });
+
+  const maxLat: number = Math.max(...allLat);
+  const minLat: number = Math.min(...allLat);
+
+  if (maxLat - minLat < 2) zoom = 7;
+  else if (maxLat - minLat < 5) zoom = 6;
+  else if (maxLat - minLat < 14) zoom = 5;
+  else if (maxLat - minLat < 20) zoom = 4;
+  else zoom = 3;
+
+  return { avgCoordinates, zoom };
 }
 
 export default MapCentering;
