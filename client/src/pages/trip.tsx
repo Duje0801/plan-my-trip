@@ -5,6 +5,7 @@ import Top from "../components/trip/navigation/top";
 import Tabs from "../components/trip/navigation/tabs";
 import CountryInfo from "../components/trip/info/countryInfo";
 import ItineraryDetails from "../components/trip/info/itineraryDetails";
+import ImagesCarousel from "../components/trip/info/imagesCarousel";
 
 function Trip(): JSX.Element {
   const { state } = useAppContext();
@@ -24,6 +25,7 @@ function Trip(): JSX.Element {
           <Tabs />
         </nav>
         <CountryInfo />
+        <ImagesCarousel />
         <ItineraryDetails />
       </div>
     );

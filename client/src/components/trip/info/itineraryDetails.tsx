@@ -11,7 +11,7 @@ function ItineraryDetails(): JSX.Element {
           return (
             <div
               key={i}
-              className="collapse collapse-arrow bg-slate-700 mx-4 mb-4 w-fit"
+              className="collapse collapse-arrow bg-slate-700 mx-4 mb-4 w-fit rounded-lg"
             >
               <input type="radio" name="my-accordion-2" />
               <div className="collapse-title flex flex-row text-xl text-slate-100 font-bold p-4">

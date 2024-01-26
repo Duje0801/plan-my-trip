@@ -32,5 +32,5 @@ interface IPhoto {
 export interface ITripData {
   info: ICountryInfo;
   itinerary: IItinerary;
-  photo: IPhoto;
+  photo: IPhoto[];
 }

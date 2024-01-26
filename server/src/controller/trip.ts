@@ -46,7 +46,7 @@ export default async function trip(req: Request, res: Response) {
     const itinerary: IItinerary = await generateItineraryFun(country, days);
 
     //Itinerary generation from Pexels
-    const pictures: IPhoto[] | null = await generatePhotosFun(country);
+    const photo: IPhoto[] | null = await generatePhotosFun(country);
 
     //Response
     res.json({
@@ -54,7 +54,7 @@ export default async function trip(req: Request, res: Response) {
       data: {
         info: countryData.data,
         itinerary,
-        pictures,
+        photo,
       },
     });
   } catch (error: any) {
