@@ -6,10 +6,10 @@ export default function search(req: Request, res: Response) {
   const params: string = req.params.id;
   let countriesArray: ICountryCode[] = [];
 
-  if (params.length < 3 || params.length > 15)
+  if (params.length < 3 || params.length > 30)
     return res.status(400).json({
       status: `fail`,
-      error: `Search text length must be between 3 characters and 15 characters`,
+      error: `Search text length must be between 3 characters and 30 characters`,
     });
 
   for (let i = 0; i < countriesList.length; i++) {

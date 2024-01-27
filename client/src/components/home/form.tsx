@@ -39,6 +39,15 @@ export default function Form(): JSX.Element {
     }
   };
 
+  const checkOnlyLetters = (text: string): void => {
+    //In country search only letters , ( and ) are allowed
+    const regex = /^[a-zA-Z,() ]*$/;
+
+    if (regex.test(text) || text === "") {
+      dispatch({ type: "SET_INPUT_TEXT", payload: text });
+    }
+  };
+
   //The itinerary is generated only after clicking the submit button
   const handleSubmit = (e: FormEvent): void => {
     e.preventDefault();
@@ -59,11 +68,9 @@ export default function Form(): JSX.Element {
             type="text"
             placeholder="I am traveling to ..."
             className="input input-bordered bg-slate-100 text-l text-slate-600 m-0 text-black focus:ring-1 ring-slate-300 w-3/5"
-            maxLength={15}
+            maxLength={30}
             value={state.inputText}
-            onChange={(e) =>
-              dispatch({ type: "SET_INPUT_TEXT", payload: e.target.value })
-            }
+            onChange={(e) => checkOnlyLetters(e.target.value)}
           />
           {/* Search Results */}
           {selectedCountry === state.inputText ? null : (
