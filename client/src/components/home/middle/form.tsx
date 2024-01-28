@@ -18,6 +18,12 @@ export default function Form(): JSX.Element {
   const { state } = useAppContext();
 
   useEffect(() => {
+    if (error && errorRef.current) {
+      errorRef.current.showModal();
+    }
+  }, [error]);
+
+  useEffect(() => {
     function fetchData() {
       axios
         .get(`http://localhost:4000/api/search/${state.inputText}`)
@@ -26,9 +32,6 @@ export default function Form(): JSX.Element {
         })
         .catch((err: any) => {
           setError("Something went wrong, please try again later.");
-          if (errorRef.current) {
-            errorRef.current.showModal();
-          }
         });
     }
     if (state.inputText.length < 3) return setCountriesList([]);
@@ -58,7 +61,10 @@ export default function Form(): JSX.Element {
         />
 
         {/* 2nd Row */}
-        <ButtonsRow openAdvSearchModal={openAdvSearchModal} />
+        <ButtonsRow
+          setError={setError}
+          openAdvSearchModal={openAdvSearchModal}
+        />
       </form>
 
       {/* Advanced Search Modal */}
