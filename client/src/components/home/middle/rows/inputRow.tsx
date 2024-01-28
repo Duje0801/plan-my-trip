@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction } from "react";
-import SearchResults from "../home/searchResults";
-import { useAppContext } from "../../context/context";
-import { ICountryCode } from "../../interfaces/countryCode";
+import SearchResults from "./inputRowResults/searchResults";
+import { useAppContext } from "../../../../context/context";
+import { ICountryCode } from "../../../../interfaces/countryCode";
 
 interface Props {
   selectedCountry: string;

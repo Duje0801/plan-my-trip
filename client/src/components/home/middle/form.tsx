@@ -1,10 +1,10 @@
 import { useState, useEffect, useRef, FormEvent } from "react";
-import InputRow from "../formRows/inputRow";
-import ButtonsRow from "../formRows/buttonsRow";
-import AdvSearch from "./modals/advSearch";
-import ErrorModal from "./modals/error";
-import { ICountryCode } from "../../interfaces/countryCode";
-import { useAppContext } from "../../context/context";
+import InputRow from "./rows/inputRow";
+import ButtonsRow from "./rows/buttonsRow";
+import AdvSearch from "../modals/advSearch";
+import ErrorModal from "../modals/error";
+import { ICountryCode } from "../../../interfaces/countryCode";
+import { useAppContext } from "../../../context/context";
 import axios from "axios";
 
 export default function Form(): JSX.Element {

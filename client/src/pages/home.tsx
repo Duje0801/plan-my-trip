@@ -1,6 +1,6 @@
 import { useAppContext } from "../context/context";
-import TopMenu from "../components/home/topMenu";
-import Middle from "../components/home/middle";
+import TopMenu from "../components/home/topMenu/topMenu";
+import Middle from "../components/home/middle/middle";
 import Waiting from "./waiting";
 import video from "../img/video.mp4";
 
