@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef, FormEvent } from "react";
-import SearchResults from "./searchResults";
+import InputRow from "../formRows/inputRow";
+import ButtonsRow from "../formRows/buttonsRow";
 import AdvSearch from "./modals/advSearch";
 import ErrorModal from "./modals/error";
 import { ICountryCode } from "../../interfaces/countryCode";
@@ -14,7 +15,7 @@ export default function Form(): JSX.Element {
   const advSearchRef = useRef<HTMLDialogElement | null>(null);
   const errorRef = useRef<HTMLDialogElement | null>(null);
 
-  const { state, dispatch } = useAppContext();
+  const { state } = useAppContext();
 
   useEffect(() => {
     function fetchData() {
@@ -40,80 +41,24 @@ export default function Form(): JSX.Element {
     }
   };
 
-  const checkOnlyLetters = (text: string): void => {
-    //In country search only letters , ( and ) are allowed
-    const regex = /^[a-zA-Z,() ]*$/;
-
-    if (regex.test(text) || text === "") {
-      dispatch({ type: "SET_INPUT_TEXT", payload: text });
-    }
-  };
-
   //The itinerary is generated only after clicking the submit button
   const handleSubmit = (e: FormEvent): void => {
     e.preventDefault();
     return;
   };
 
-  const handleClickSubmit = () => {
-    dispatch({ type: "SET_WAITING", payload: true });
-  };
-
   return (
     <>
       <form onSubmit={handleSubmit} className="flex flex-col gap-4 w-[80vw]">
         {/* 1st Row */}
-        <div className="flex flex-row">
-          {/* Destination Input */}
-          <input
-            type="text"
-            placeholder="I am traveling to ..."
-            className="input input-bordered bg-slate-100 text-l text-slate-600 m-0 text-black focus:ring-1 ring-slate-300 w-3/5"
-            maxLength={30}
-            value={state.inputText}
-            onChange={(e) => checkOnlyLetters(e.target.value)}
-          />
-          {/* Search Results */}
-          {selectedCountry === state.inputText ? null : (
-            <SearchResults
-              countriesList={countriesList}
-              setSelectedCountry={setSelectedCountry}
-            />
-          )}
-          <span className="text-l m-auto">for</span>
-          {/* Days Input */}
-          <input
-            type="number"
-            placeholder="...days"
-            className="input input-bordered bg-slate-100 text-l text-slate-600 m-0 text-black w-1/4 focus:ring-1 ring-slate-300"
-            min="2"
-            max="31"
-            value={state.days || ``}
-            onChange={(e) =>
-              dispatch({ type: "SET_DAYS", payload: Number(e.target.value) })
-            }
-          />
-        </div>
+        <InputRow
+          selectedCountry={selectedCountry}
+          setSelectedCountry={setSelectedCountry}
+          countriesList={countriesList}
+        />
 
         {/* 2nd Row */}
-        <div className="flex flex-row gap-4 justify-between">
-          {/* Advanced Search Button */}
-          <button
-            type="button"
-            className="btn btn-active text-l bg-slate-300 w-1/2 hover:bg-slate-100"
-            onClick={openAdvSearchModal}
-          >
-            Advanced Search
-          </button>
-          {/* Submit Button */}
-          <button
-            type="button"
-            onClick={handleClickSubmit}
-            className="btn btn-active text-l bg-slate-300 w-2/5 hover:bg-slate-100"
-          >
-            Submit
-          </button>
-        </div>
+        <ButtonsRow openAdvSearchModal={openAdvSearchModal} />
       </form>
 
       {/* Advanced Search Modal */}
