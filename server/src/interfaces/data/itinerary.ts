@@ -1,6 +1,6 @@
 export interface IDay {
   day: number;
-  destination: string;
+  name: string;
   mainAttraction: string;
   coordinates: [number, number];
   description: string;

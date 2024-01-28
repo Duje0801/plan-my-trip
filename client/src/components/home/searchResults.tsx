@@ -1,9 +1,9 @@
 import { useState, Dispatch, SetStateAction, useEffect } from "react";
-import { CountryCode } from "../../interfaces/countryCode";
+import { ICountryCode } from "../../interfaces/countryCode";
 import { useAppContext } from "../../context/context";
 
 interface Props {
-  countriesList: CountryCode[];
+  countriesList: ICountryCode[];
   setSelectedCountry: Dispatch<SetStateAction<string>>;
 }
 
@@ -19,7 +19,7 @@ export default function SearchResults({
     setSearchPage(1);
   }, [state.inputText]);
 
-  const handleClick = (country: CountryCode) => {
+  const handleClickCountry = (country: ICountryCode) => {
     dispatch({ type: "SET_INPUT_TEXT", payload: country.name });
     setSelectedCountry(country.name);
   };
@@ -42,7 +42,7 @@ export default function SearchResults({
         if (i >= start && i <= end)
           return (
             <div
-              onClick={(e) => handleClick(country)}
+              onClick={(e) => handleClickCountry(country)}
               className="btn join-item w-48 text-slate-700 bg-slate-100 animate-none"
               key={i}
             >

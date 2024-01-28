@@ -1,7 +1,7 @@
 import OpenAI from "openai";
-import { IItinerary } from "../interfaces/data/itinerary";
-import dotenv from "dotenv";
+import { IItinerary } from "../../interfaces/data/itinerary";
 
+import dotenv from "dotenv";
 dotenv.config();
 
 const openai = new OpenAI({
@@ -9,17 +9,14 @@ const openai = new OpenAI({
 });
 
 export default async function generateItineraryFun(
-  country: string,
-  days: number
+  question: string
 ): Promise<IItinerary> {
   const chatCompletion = await openai.chat.completions.create({
     model: "gpt-3.5-turbo-0613",
     messages: [
       {
         role: "user",
-        content: `Hello, I am user, please give me ${days} day itinerary for trip in ${country}. 
-            Distances between cities two days in row must be at most 400km, longer only if i am traveling by plane.
-            Description for each day must have at least 30 words.`,
+        content: question,
       },
     ],
     functions: [
@@ -41,7 +38,7 @@ export default async function generateItineraryFun(
                     type: "number",
                     description: "Day of the trip",
                   },
-                  destination: {
+                  name: {
                     type: "string",
                     description: "Name of the destination",
                   },

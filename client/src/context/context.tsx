@@ -1,24 +1,28 @@
 import React, { createContext, useContext, useReducer, ReactNode } from "react";
 import { ITripData } from "../interfaces/tripData";
+import { IAdvSearch } from "../interfaces/advSearch";
 
 interface AppState {
   waiting: boolean;
   data: ITripData | null;
   inputText: string;
   days: number;
+  advSearch: IAdvSearch;
 }
 
 type AppActions =
   | { type: "SET_WAITING"; payload: boolean }
   | { type: "SET_DATA"; payload: ITripData | null }
   | { type: "SET_INPUT_TEXT"; payload: string }
-  | { type: "SET_DAYS"; payload: number };
+  | { type: "SET_DAYS"; payload: number }
+  | { type: "SET_ADV_SEARCH"; payload: IAdvSearch };
 
 const initialState: AppState = {
   waiting: false,
   data: null,
   inputText: "",
   days: 0,
+  advSearch: { month: ``, part: ``, nature: 0, history: 0, cities: 0 },
 };
 
 const AppContext = createContext<
@@ -39,6 +43,8 @@ const appReducer = (state: AppState, action: AppActions): AppState => {
       return { ...state, inputText: action.payload };
     case "SET_DAYS":
       return { ...state, days: action.payload };
+    case "SET_ADV_SEARCH":
+      return { ...state, advSearch: action.payload };
     default:
       return state;
   }

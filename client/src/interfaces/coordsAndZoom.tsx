@@ -1,4 +1,4 @@
-export interface CoordsAndZoom {
+export interface ICoordsAndZoom {
   avgCoordinates: [number, number];
   zoom: number;
 }

@@ -1,13 +1,14 @@
 import { useState, useEffect, useRef, FormEvent } from "react";
 import SearchResults from "./searchResults";
-import { CountryCode } from "../../interfaces/countryCode";
-import { MdDangerous } from "react-icons/md";
+import AdvSearch from "./modals/advSearch";
+import ErrorModal from "./modals/error";
+import { ICountryCode } from "../../interfaces/countryCode";
 import { useAppContext } from "../../context/context";
 import axios from "axios";
 
 export default function Form(): JSX.Element {
   const [selectedCountry, setSelectedCountry] = useState<string>(``);
-  const [countriesList, setCountriesList] = useState<CountryCode[]>([]);
+  const [countriesList, setCountriesList] = useState<ICountryCode[]>([]);
   const [error, setError] = useState<string>(``);
 
   const advSearchRef = useRef<HTMLDialogElement | null>(null);
@@ -116,27 +117,17 @@ export default function Form(): JSX.Element {
       </form>
 
       {/* Advanced Search Modal */}
-      <dialog ref={advSearchRef} id="advancedSearchModal" className="modal">
-        <div className="modal-box">
-          <div className="modal-action">
-            <form method="dialog">
-              <button className="btn">Close</button>
-            </form>
-          </div>
-        </div>
+      <dialog
+        ref={advSearchRef}
+        id="advancedSearchModal"
+        className="modal rounded-lg"
+      >
+        <AdvSearch />
       </dialog>
 
       {/* Error Modal */}
-      <dialog ref={errorRef} id="advancedSearchModal" className="modal">
-        <div className="modal-box border-2 border-black border-solid">
-          <MdDangerous className="text-red-500 mx-auto text-6xl" />
-          <p className="text-xl text-red-500 font-bold mt-6">{error}</p>
-          <div className="modal-action">
-            <form method="dialog">
-              <button className="btn bg-red-500 text-white">Close</button>
-            </form>
-          </div>
-        </div>
+      <dialog ref={errorRef} id="errorModal" className="modal">
+        <ErrorModal error={error} />
       </dialog>
     </>
   );

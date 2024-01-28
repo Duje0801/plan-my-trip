@@ -1,5 +1,5 @@
-import countriesList from "../data/countriesList.json";
-import { ICountryCode } from "../interfaces/forFunctions/countryCode";
+import countriesList from "../../data/countriesList.json";
+import { ICountryCode } from "../../interfaces/forFunctions/countryCode";
 
 export default function checkCountryExistFun(
   country: string

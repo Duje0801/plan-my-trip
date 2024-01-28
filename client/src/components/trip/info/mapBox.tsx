@@ -3,7 +3,7 @@ import { MapContainer, TileLayer, Popup, Marker } from "react-leaflet";
 import L, { Map } from "leaflet";
 import MapCentering from "../../../logic/mapCentering";
 import { useAppContext } from "../../../context/context";
-import { CoordsAndZoom } from "../../../interfaces/coordsAndZoom";
+import { ICoordsAndZoom } from "../../../interfaces/coordsAndZoom";
 import "leaflet/dist/leaflet.css";
 
 interface Props {
@@ -16,7 +16,7 @@ function MapBox({ selectedDay, setSelectedDay }: Props): JSX.Element {
 
   const mapRef = useRef<Map>(null);
 
-  const centerCoordinates: CoordsAndZoom = MapCentering();
+  const centerCoordinates: ICoordsAndZoom = MapCentering();
 
   const handleMarkerClick = (i: number): void => {
     setSelectedDay(i + 1);
@@ -74,7 +74,7 @@ function MapBox({ selectedDay, setSelectedDay }: Props): JSX.Element {
               <Popup maxWidth={250}>
                 <div>
                   <div className="text-base font-bold">
-                    Day {day.day} - {day.destination}
+                    Day {day.day} - {day.name}
                   </div>
                   <p className="text-sm text-justify">{day.description}</p>
                 </div>

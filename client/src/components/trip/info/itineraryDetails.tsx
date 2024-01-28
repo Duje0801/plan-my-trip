@@ -29,7 +29,7 @@ function ItineraryDetails({
             >
               <input type="radio" name="my-accordion-2" />
               <div className="collapse-title flex flex-row text-xl text-slate-100 font-bold p-4">
-                Day {day.day} - {day.destination}
+                Day {day.day} - {day.name}
               </div>
               <div className="collapse-content">
                 <p className="text-justify text-slate-100">

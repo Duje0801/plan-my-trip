@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppContext } from "../context/context";
+import { FetchString } from "../logic/fetchString";
 import waitingGif from "../img/waiting-img.gif";
 import errorGif from "../img/error-img.gif";
 import axios from "axios";
@@ -8,16 +9,16 @@ import axios from "axios";
 export default function Waiting() {
   const [error, setError] = useState(``);
 
-  const { state, dispatch } = useAppContext();
+  const { dispatch } = useAppContext();
 
   const navigate = useNavigate();
+
+  const fetchString: string = FetchString();
 
   useEffect(() => {
     function fetchData() {
       axios
-        .get(
-          `http://localhost:4000/api/trip/?country=${state.inputText}&days=${state.days}`
-        )
+        .get(fetchString)
         .then((res) => {
           dispatch({ type: "SET_DATA", payload: res.data.data });
           dispatch({ type: "SET_WAITING", payload: false });

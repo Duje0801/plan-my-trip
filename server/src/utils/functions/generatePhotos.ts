@@ -1,7 +1,7 @@
 import { createClient } from "pexels";
-import { IPhoto } from "../interfaces/data/photo";
-import dotenv from "dotenv";
+import { IPhoto } from "../../interfaces/data/photo";
 
+import dotenv from "dotenv";
 dotenv.config();
 
 const pexelsClient = createClient(`${process.env.PEXELS_KEY}`);

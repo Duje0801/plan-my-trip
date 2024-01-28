@@ -1,6 +1,6 @@
 import fetch from "node-fetch";
-import { ICountryCode } from "../interfaces/forFunctions/countryCode";
-import { ICountryDataFun } from "../interfaces/forFunctions/countryDataFun";
+import { ICountryCode } from "../../interfaces/forFunctions/countryCode";
+import { ICountryDataFun } from "../../interfaces/forFunctions/countryDataFun";
 
 export default async function countryInfoFun(
   country: ICountryCode

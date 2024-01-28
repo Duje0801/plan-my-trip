@@ -1,10 +1,11 @@
 import { Request, Response } from "express";
 
-//Functions
-import checkCountryExistFun from "../functions/checkCountryExist";
-import countryDataFun from "../functions/countryData";
-import generateItineraryFun from "../functions/generateItinerary";
-import generatePhotosFun from "../functions/generatePhotos";
+//Utils
+import AskQuestion from "../utils/texts/askQuestion";
+import checkCountryExistFun from "../utils/functions/checkCountryExist";
+import countryDataFun from "../utils/functions/countryData";
+import generateItineraryFun from "../utils/functions/generateItinerary";
+import generatePhotosFun from "../utils/functions/generatePhotos";
 
 //Interfaces
 import { ICountryCode } from "../interfaces/forFunctions/countryCode";
@@ -20,6 +21,11 @@ export default async function trip(req: Request, res: Response) {
   try {
     const country: string = String(req.query.country);
     const days: number = Number(req.query.days);
+    const month: string = String(req.query.month || ``);
+    const part: string = String(req.query.part || ``);
+    const nature: number = Number(req.query.nature || 0);
+    const history: number = Number(req.query.history || 0);
+    const cities: number = Number(req.query.cities || 0);
 
     //Checking whether the requested country exists in the database
     const checkCountryExist: ICountryCode | null =
@@ -43,7 +49,17 @@ export default async function trip(req: Request, res: Response) {
     }
 
     //Generating itineraries from AI
-    const itinerary: IItinerary = await generateItineraryFun(country, days);
+    const question: string = AskQuestion(
+      country,
+      days,
+      month,
+      part,
+      nature,
+      history,
+      cities
+    );
+
+    const itinerary: IItinerary = await generateItineraryFun(question);
 
     //Itinerary generation from Pexels
     const photo: IPhoto[] | null = await generatePhotosFun(country);
