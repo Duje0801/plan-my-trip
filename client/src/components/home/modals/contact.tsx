@@ -3,7 +3,7 @@ import { FaSquareXTwitter } from "react-icons/fa6";
 
 function Contact(): JSX.Element {
   return (
-    <div className="modal-box flex flex-col border-2 border-black border-solid">
+    <div className="modal-box flex flex-col border-2 border-black border-solid rounded-lg">
       <h1 className="text-2xl font-bold text-center mb-4">Contact Us</h1>
       <p className="text-justify">
         For any inquiries, comments, or suggestions, feel free to reach out to

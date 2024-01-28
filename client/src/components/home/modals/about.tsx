@@ -1,6 +1,6 @@
 function About(): JSX.Element {
   return (
-    <div className="modal-box flex flex-col gap-4 border-2 border-black border-solid">
+    <div className="modal-box flex flex-col gap-4 border-2 border-black border-solid rounded-lg">
       <h1 className="text-2xl font-bold text-center mb-4">About</h1>
       <p className="text-base text-slate-700 text-justify">
         Welcome to Plan My Trip! We are an innovative platform utilizing

@@ -6,7 +6,7 @@ interface Props {
 
 function ErrorModal({ error }: Props): JSX.Element {
   return (
-    <div className="modal-box border-2 border-black border-solid">
+    <div className="modal-box border-2 border-black border-solid rounded-lg">
       <MdDangerous className="text-red-500 mx-auto text-6xl" />
       <p className="text-xl text-red-500 font-bold mt-6">{error}</p>
       <div className="modal-action">
