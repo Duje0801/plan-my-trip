@@ -1,20 +1,19 @@
-import { useRef, Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction } from "react";
 import { MapContainer, TileLayer, Popup, Marker } from "react-leaflet";
 import L, { Map } from "leaflet";
-import MapCentering from "../../../logic/mapCentering";
-import { useAppContext } from "../../../context/context";
-import { ICoordsAndZoom } from "../../../interfaces/coordsAndZoom";
+import MapCentering from "../../../../logic/mapCentering";
+import { useAppContext } from "../../../../context/context";
+import { ICoordsAndZoom } from "../../../../interfaces/coordsAndZoom";
 import "leaflet/dist/leaflet.css";
 
 interface Props {
   selectedDay: number;
   setSelectedDay: Dispatch<SetStateAction<number>>;
+  mapRef: React.RefObject<Map>;
 }
 
-function MapBox({ selectedDay, setSelectedDay }: Props): JSX.Element {
+function MapBox({ selectedDay, setSelectedDay, mapRef }: Props): JSX.Element {
   const { state } = useAppContext();
-
-  const mapRef = useRef<Map>(null);
 
   const centerCoordinates: ICoordsAndZoom = MapCentering();
 
@@ -22,27 +21,8 @@ function MapBox({ selectedDay, setSelectedDay }: Props): JSX.Element {
     setSelectedDay(i + 1);
   };
 
-  const clickResetMap = (): void => {
-    setSelectedDay(0);
-    if (mapRef.current) {
-      mapRef.current.closePopup();
-      mapRef.current.setView(
-        centerCoordinates.avgCoordinates,
-        centerCoordinates.zoom
-      );
-    }
-  };
-
   return (
     <section>
-      <div className="flex justify-center mt-4">
-        <button
-          onClick={clickResetMap}
-          className="w-fit text-xl font-bold text-center mx-auto bg-slate-700 text-slate-100 py-1 px-4 rounded-lg"
-        >
-          Reset Map
-        </button>
-      </div>
       <MapContainer
         className="m-4 h-[70vh] rounded-lg"
         center={centerCoordinates.avgCoordinates}

@@ -1,12 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import { Map } from "leaflet";
 import { useAppContext } from "../context/context";
-import Top from "../components/trip/navigation/top";
-import Tabs from "../components/trip/navigation/tabs";
-import CountryInfo from "../components/trip/info/countryInfo";
-import ItineraryDetails from "../components/trip/info/itineraryDetails";
-import ImagesCarousel from "../components/trip/info/imagesCarousel";
-import MapBox from "../components/trip/info/mapBox";
+import Navigation from "../components/trip/navigation/navigation";
+import Main from "../components/trip/info/main";
 
 function Trip(): JSX.Element {
   const [navOption, setNavOption] = useState<number>(1);
@@ -16,6 +13,9 @@ function Trip(): JSX.Element {
 
   const navigate = useNavigate();
 
+  //This is a map reference, the code for the map is in the MapBox file
+  const mapRef = useRef<Map>(null);
+
   useEffect(() => {
     if (!state.data) navigate(`/`);
   }, []);
@@ -24,26 +24,19 @@ function Trip(): JSX.Element {
   else
     return (
       <div className="bg-slate-100 pb-2 min-h-[100vh]">
-        <nav>
-          <Top />
-          <Tabs navOption={navOption} setNavOption={setNavOption} />
-        </nav>
-        {/*If navOption is 1 it shows info, photos and itinerary (day by day), otherwise it shows the map*/}
-        <main>
-          {navOption === 1 ? (
-            <>
-              {" "}
-              <CountryInfo />
-              <ImagesCarousel />
-              <ItineraryDetails
-                setSelectedDay={setSelectedDay}
-                setNavOption={setNavOption}
-              />
-            </>
-          ) : (
-            <MapBox selectedDay={selectedDay} setSelectedDay={setSelectedDay} />
-          )}
-        </main>
+        <Navigation
+          mapRef={mapRef}
+          navOption={navOption}
+          setNavOption={setNavOption}
+          setSelectedDay={setSelectedDay}
+        />
+        <Main
+          mapRef={mapRef}
+          navOption={navOption}
+          selectedDay={selectedDay}
+          setNavOption={setNavOption}
+          setSelectedDay={setSelectedDay}
+        />
       </div>
     );
 }

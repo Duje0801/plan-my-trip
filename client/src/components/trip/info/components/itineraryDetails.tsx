@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction } from "react";
-import { useAppContext } from "../../../context/context";
+import { useAppContext } from "../../../../context/context";
 
 interface Props {
   setSelectedDay: Dispatch<SetStateAction<number>>;

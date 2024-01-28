@@ -1,5 +1,5 @@
-import { useAppContext } from "../../../context/context";
-import AreaConverter from "../../../logic/areaConverter";
+import { useAppContext } from "../../../../context/context";
+import AreaConverter from "../../../../logic/areaConverter";
 
 function CountryInfo(): JSX.Element {
   const { state } = useAppContext();
