@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useAppContext } from "../../../context/context";
 import { countryParts } from "../../../data/countryParts";
 import { months } from "../../../data/months";
@@ -10,7 +10,15 @@ function AdvSearch(): JSX.Element {
   const [history, setHistory] = useState<number>(0);
   const [cities, setCities] = useState<number>(0);
 
-  const { dispatch } = useAppContext();
+  const { state, dispatch } = useAppContext();
+
+  useEffect(() => {
+    setMonth(state.advSearch.month);
+    setPart(state.advSearch.part);
+    setNature(state.advSearch.nature);
+    setHistory(state.advSearch.history);
+    setCities(state.advSearch.cities);
+  }, []);
 
   const changeMonth = (event: React.ChangeEvent<HTMLSelectElement>): void => {
     setMonth(event.target.value);
@@ -71,7 +79,7 @@ function AdvSearch(): JSX.Element {
           <select
             onChange={changeMonth}
             className="select select-sm text-slate-700 w-2/3 mx-auto text-l border-2 border-slate-700 rounded-lg"
-            defaultValue="Any Month"
+            defaultValue={state.advSearch.month || "Any Month"}
           >
             {months.map((month, i) => {
               return (
@@ -89,7 +97,7 @@ function AdvSearch(): JSX.Element {
           <select
             onChange={changeCountryPart}
             className="select select-sm text-slate-700 w-2/3 mx-auto text-l border-2 border-slate-700 rounded-lg"
-            defaultValue="Doesn't matter"
+            defaultValue={state.advSearch.part || "Whole country"}
           >
             {countryParts.map((part, i) => {
               return (

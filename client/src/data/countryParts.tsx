@@ -1,5 +1,5 @@
 export const countryParts: string[] = [
-  "Doesn't matter",
+  "Whole country",
   "North",
   "East",
   "West",
