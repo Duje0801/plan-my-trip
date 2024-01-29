@@ -78,8 +78,9 @@ function AdvSearch(): JSX.Element {
           <p className="text-slate-700 text-l">I will go in ...</p>
           <select
             onChange={changeMonth}
-            className="select select-sm text-slate-700 w-2/3 mx-auto text-l border-2 border-slate-700 rounded-lg"
-            defaultValue={state.advSearch.month || "Any Month"}
+            className="select select-sm text-slate-700 w-2/3 mx-auto text-l border-2 border-slate-700 rounded-lg 
+            focus:outline-none focus:border-2 focus:border-slate-700"
+            defaultValue={state.advSearch.month || ""}
           >
             {months.map((month, i) => {
               return (
@@ -96,8 +97,9 @@ function AdvSearch(): JSX.Element {
           <p className="text-slate-700 text-l">I want to visit...</p>
           <select
             onChange={changeCountryPart}
-            className="select select-sm text-slate-700 w-2/3 mx-auto text-l border-2 border-slate-700 rounded-lg"
-            defaultValue={state.advSearch.part || "Whole country"}
+            className="select select-sm text-slate-700 w-2/3 mx-auto text-l border-2 border-slate-700 rounded-lg 
+            focus:outline-none focus:border-2 focus:border-slate-700"
+            defaultValue={state.advSearch.part || ""}
           >
             {countryParts.map((part, i) => {
               return (
@@ -107,7 +109,7 @@ function AdvSearch(): JSX.Element {
               );
             })}
           </select>
-          <p className="text-slate-700 text-l">...part of the country.</p>
+          <p className="text-slate-700 text-l">...part(s) of the country.</p>
         </div>
 
         {/*Choosing what to base the trip around*/}
@@ -160,12 +162,9 @@ function AdvSearch(): JSX.Element {
       {/*Buttons*/}
       <form method="dialog">
         <div className="flex justify-between mt-2">
-          <button className="btn btn-active text-l bg-slate-300 w-[45%]">
-            Close
-          </button>
           <button
             onClick={handleClickSave}
-            className="btn btn-active text-l bg-slate-300 w-[45%]"
+            className="btn btn-active text-l bg-slate-300 ml-auto w-fit hover:bg-slate-100"
           >
             Save
           </button>

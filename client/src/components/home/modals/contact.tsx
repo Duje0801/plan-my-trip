@@ -9,7 +9,7 @@ function Contact(): JSX.Element {
         For any inquiries, comments, or suggestions, feel free to reach out to
         us via email.
       </p>
-      <p className="my-2 text-center">
+      <p className="my-2 text-center hover:text-slate-300">
         <a href="mailto:info@plan-my-trip.com">
           <b>info@not-plan-my-trip-mail.com</b>
         </a>
@@ -20,23 +20,23 @@ function Contact(): JSX.Element {
       <ul className="flex flex-row gap-2 mx-auto">
         <li>
           <a href="https://www.facebook.com/not-plan-my-trip-facebook">
-            <FaFacebookSquare className="text-4xl" />
+            <FaFacebookSquare className="text-4xl hover:text-slate-300" />
           </a>
         </li>
         <li>
           <a href="https://twitter.com/not-plan-my-trip-X">
-            <FaSquareXTwitter className="text-4xl" />
+            <FaSquareXTwitter className="text-4xl hover:text-slate-300" />
           </a>
         </li>
         <li>
           <a href="https://www.instagram.com/not-plan-my-trip-instagram">
-            <FaInstagramSquare className="text-4xl" />
+            <FaInstagramSquare className="text-4xl hover:text-slate-300" />
           </a>
         </li>
       </ul>
       <div className="modal-action mt-4">
         <form method="dialog">
-          <button className="btn bg-slate-300">Close</button>
+          <button className="btn bg-slate-300 hover:bg-slate-100">Close</button>
         </form>
       </div>
     </div>

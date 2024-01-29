@@ -52,7 +52,7 @@ export default function Form(): JSX.Element {
 
   return (
     <>
-      <form onSubmit={handleSubmit} className="flex flex-col gap-4 w-[80vw]">
+      <form onSubmit={handleSubmit} className="flex flex-col gap-4 w-[80vw] md:w-[50vw] lg:w-[35vw]">
         {/* 1st Row */}
         <InputRow
           selectedCountry={selectedCountry}
@@ -78,7 +78,7 @@ export default function Form(): JSX.Element {
 
       {/* Error Modal */}
       <dialog ref={errorRef} id="errorModal" className="modal">
-        <ErrorModal error={error} />
+        <ErrorModal error={error} setError={setError} />
       </dialog>
     </>
   );

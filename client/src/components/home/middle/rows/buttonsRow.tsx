@@ -12,10 +12,10 @@ function ButtonsRow({ setError, openAdvSearchModal }: Props): JSX.Element {
   const handleClickSubmit = () => {
     if (state.inputText.length < 3)
       return setError(
-        `The number of characters in country search must be 3 or more.`
+        `Error! The number of characters in country search must be 3 or more.`
       );
     if (state.days < 2 || state.days > 31)
-      return setError(`Allowed days number is between 2 and 31.`);
+      return setError(`Error! The allowed number of days is between 2 and 31.`);
     dispatch({ type: "SET_WAITING", payload: true });
   };
 

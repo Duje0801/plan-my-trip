@@ -20,7 +20,7 @@ function About(): JSX.Element {
 
       <div className="modal-action mt-4">
         <form method="dialog">
-          <button className="btn bg-slate-300">Close</button>
+          <button className="btn bg-slate-300 hover:bg-slate-100">Close</button>
         </form>
       </div>
     </div>

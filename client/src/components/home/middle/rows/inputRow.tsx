@@ -31,7 +31,7 @@ function InputRow({
       <input
         type="text"
         placeholder="I am traveling to ..."
-        className="input input-bordered bg-slate-100 text-l text-slate-600 m-0 text-black focus:ring-1 ring-slate-300 w-3/5"
+        className="input input-bordered bg-slate-100 text-l text-slate-700 m-0 text-black w-3/5 focus:bg-slate-300"
         maxLength={30}
         value={state.inputText}
         onChange={(e) => checkOnlyLetters(e.target.value)}
@@ -48,7 +48,7 @@ function InputRow({
       <input
         type="number"
         placeholder="...days"
-        className="input input-bordered bg-slate-100 text-l text-slate-600 m-0 text-black w-1/4 focus:ring-1 ring-slate-300"
+        className="input input-bordered bg-slate-100 text-l text-slate-600 m-0 text-black w-1/4 focus:bg-slate-300"
         min="2"
         max="31"
         value={state.days || ``}
