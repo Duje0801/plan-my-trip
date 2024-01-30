@@ -45,7 +45,7 @@ function ImagesCarousel(): JSX.Element {
       <>
         {/*Images in info (between CountryInfo and ItineraryDetails)*/}
         <section className="carousel carousel-item mx-4 mb-4 h-[33vh] bg-slate-700 rounded-lg relative">
-          <img src={photoInModal.url} className="w-fit h-full m-auto" />
+          <img src={photoInModal.url} className="w-auto h-full m-auto" />
           <MdOutlineZoomOutMap
             onClick={() => handlePhotoClick()}
             className="absolute top-2 right-2 text-3xl bg-slate-100 rounded-md cursor-pointer hover:bg-slate-300 
