@@ -3,6 +3,7 @@ import { useAppContext } from "../../../../context/appContext";
 import { IPhoto } from "../../../../interfaces/tripData";
 import { MdOutlineZoomOutMap } from "react-icons/md";
 import { IoMdCloseCircle } from "react-icons/io";
+import CalcPhotosNumber from "../../../../logic/calcPhotosNumber";
 
 function ImagesCarousel(): JSX.Element {
   const [photoInModal, setPhotoInModal] = useState<IPhoto>({
@@ -16,10 +17,7 @@ function ImagesCarousel(): JSX.Element {
   const photoRef = useRef<HTMLDialogElement | null>(null);
 
   //Calculate the number of images before and after the one displayed on the screen
-  const photoBefore: number =
-    photoNo < 1 ? state.data?.photo.length! - 1 : photoNo - 1;
-  const photoAfter: number =
-    photoNo === state.data?.photo.length! - 1 ? 0 : photoNo + 1;
+  const photoNumbers = CalcPhotosNumber(photoNo);
 
   useEffect(() => {
     setPhotoInModal(state.data?.photo[0]!);
@@ -56,13 +54,13 @@ function ImagesCarousel(): JSX.Element {
         </div>
         <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
           <a
-            onClick={(e) => handleStopPropagation(e, photoBefore)}
+            onClick={(e) => handleStopPropagation(e, photoNumbers.before)}
             className="btn btn-circle bg-slate-100 hover:bg-scale-300 hover:scale-105 transition-transform"
           >
             ❮
           </a>
           <a
-            onClick={(e) => handleStopPropagation(e, photoAfter)}
+            onClick={(e) => handleStopPropagation(e, photoNumbers.after)}
             className="btn btn-circle bg-slate-100 hover:bg-scale-300 hover:scale-105 transition-transform"
           >
             ❯
@@ -83,13 +81,13 @@ function ImagesCarousel(): JSX.Element {
             </p>
             <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
               <a
-                onClick={(e) => handleStopPropagation(e, photoBefore)}
+                onClick={(e) => handleStopPropagation(e, photoNumbers.before)}
                 className="btn btn-circle bg-slate-100 hover:bg-scale-300 hover:scale-105 transition-transform"
               >
                 ❮
               </a>
               <a
-                onClick={(e) => handleStopPropagation(e, photoAfter)}
+                onClick={(e) => handleStopPropagation(e, photoNumbers.after)}
                 className="btn btn-circle bg-slate-100 hover:bg-scale-300 hover:scale-105 transition-transform"
               >
                 ❯
