@@ -18,7 +18,7 @@ export default async function generatePhotosFun(
 
   if ("photos" in photos) {
     photosToReturn = photos.photos.map((photo) => {
-      return { photographer: photo.photographer, url: photo.src.medium };
+      return { photographer: photo.photographer, url: photo.src.large };
     });
   }
 

@@ -24,7 +24,7 @@ interface IItinerary {
   trip: IDay[];
 }
 
-interface IPhoto {
+export interface IPhoto {
   photographer: string;
   url: string;
 }
