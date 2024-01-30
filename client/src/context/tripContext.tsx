@@ -16,7 +16,7 @@ type AppActions =
   | { type: "SET_SELECTED_DAY"; payload: number };
 
 const initialState: AppState = {
-  navOption: window.innerWidth < 768 ? 1 : 0,
+  navOption: 0,
   selectedDay: -1,
 };
 
