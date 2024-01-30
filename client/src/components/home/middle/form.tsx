@@ -26,7 +26,9 @@ export default function Form(): JSX.Element {
   useEffect(() => {
     function fetchData() {
       axios
-        .get(`http://localhost:4000/api/search/${state.inputText}`)
+        .get(
+          `https://plan-my-tripappts-production.up.railway.app/api/search/${state.inputText}`
+        )
         .then((res) => {
           setCountriesList(res.data.countries);
         })
@@ -52,7 +54,10 @@ export default function Form(): JSX.Element {
 
   return (
     <>
-      <form onSubmit={handleSubmit} className="flex flex-col gap-4 w-[80vw] md:w-[50vw] lg:w-[35vw]">
+      <form
+        onSubmit={handleSubmit}
+        className="flex flex-col gap-4 w-[80vw] md:w-[50vw] lg:w-[35vw]"
+      >
         {/* 1st Row */}
         <InputRow
           selectedCountry={selectedCountry}
