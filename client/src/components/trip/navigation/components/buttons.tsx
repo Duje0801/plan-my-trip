@@ -47,7 +47,7 @@ function Buttons({ mapRef }: Props): JSX.Element {
       <div className="flex justify-center my-4 mx-auto w-1/2 md:my-0 md:max-w-fit md:ml-auto md:mr-0">
         <button
           onClick={handleClickHomePage}
-          className="w-fit text-xl font-bold text-center mx-auto bg-slate-700 text-slate-100 py-1 px-4 rounded-lg md:text-sm "
+          className="w-fit text-xl font-bold text-center mx-auto bg-slate-700 text-slate-100 py-1 px-4 rounded-lg hover:text-slate-300 md:text-sm"
         >
           Home Page
         </button>
@@ -57,7 +57,7 @@ function Buttons({ mapRef }: Props): JSX.Element {
         <div className="flex justify-center my-4 w-1/2 md:my-0 md:max-w-fit md:ml-auto md:mr-0">
           <button
             onClick={clickResetMap}
-            className="w-fit text-xl font-bold text-center mx-auto bg-slate-700 text-slate-100 py-1 px-4 rounded-lg md:text-sm"
+            className="w-fit text-xl font-bold text-center mx-auto bg-slate-700 text-slate-100 py-1 px-4 rounded-lg hover:text-slate-300 md:text-sm"
           >
             Reset Map
           </button>

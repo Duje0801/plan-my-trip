@@ -1,8 +1,12 @@
-function AreaConverter(areaNumber: number): string {
-  let toReturn: string = ``;
-  const areaString: string = String(areaNumber);
+import { useAppContext } from "../context/appContext";
 
-  if (areaNumber < 1000) return areaString;
+function AreaConverter(): string {
+  const { state } = useAppContext();
+
+  let toReturn: string = ``;
+  const areaString: string = String(Number(state.data?.info.area));
+
+  if (Number(state.data?.info.area) < 1000) return areaString;
 
   for (let i = 1; i <= areaString.length; i++) {
     if (i % 3 === 0 && i !== areaString.length)

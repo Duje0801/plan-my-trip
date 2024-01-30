@@ -22,9 +22,5 @@ export default async function generatePhotosFun(
     });
   }
 
-  if (photosToReturn.length === 10) {
-    return photosToReturn;
-  } else {
-    return null;
-  }
+  return photosToReturn;
 }

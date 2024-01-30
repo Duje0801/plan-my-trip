@@ -39,72 +39,74 @@ function ImagesCarousel(): JSX.Element {
     return;
   };
 
-  return (
-    <>
-      {/*Images in info (between CountryInfo and ItineraryDetails)*/}
-      <section className="carousel carousel-item mx-4 mb-4 h-[33vh] bg-slate-700 rounded-lg relative">
-        <img src={photoInModal.url} className="w-fit h-full m-auto" />
-        <MdOutlineZoomOutMap
-          onClick={() => handlePhotoClick()}
-          className="absolute top-2 right-2 text-3xl bg-slate-100 rounded-md cursor-pointer hover:bg-slate-300 
+  if (!state.data?.photo || state.data?.photo.length === 0) return <div></div>;
+  else
+    return (
+      <>
+        {/*Images in info (between CountryInfo and ItineraryDetails)*/}
+        <section className="carousel carousel-item mx-4 mb-4 h-[33vh] bg-slate-700 rounded-lg relative">
+          <img src={photoInModal.url} className="w-fit h-full m-auto" />
+          <MdOutlineZoomOutMap
+            onClick={() => handlePhotoClick()}
+            className="absolute top-2 right-2 text-3xl bg-slate-100 rounded-md cursor-pointer hover:bg-slate-300 
               hover:scale-105 transition-transform"
-        />
-        <div className="absolute bottom-2 left-2 text-slate-100 text-[0.5rem]">
-          {photoInModal.photographer}
-        </div>
-        <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-          <a
-            onClick={(e) => handleStopPropagation(e, photoNumbers.before)}
-            className="btn btn-circle bg-slate-100 hover:bg-scale-300 hover:scale-105 transition-transform"
-          >
-            ❮
-          </a>
-          <a
-            onClick={(e) => handleStopPropagation(e, photoNumbers.after)}
-            className="btn btn-circle bg-slate-100 hover:bg-scale-300 hover:scale-105 transition-transform"
-          >
-            ❯
-          </a>
-        </div>
-      </section>
+          />
+          <div className="absolute bottom-2 left-2 text-slate-100 text-[0.5rem]">
+            {photoInModal.photographer}
+          </div>
+          <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+            <a
+              onClick={(e) => handleStopPropagation(e, photoNumbers.before)}
+              className="btn btn-circle bg-slate-100 hover:bg-scale-300 hover:scale-105 transition-transform"
+            >
+              ❮
+            </a>
+            <a
+              onClick={(e) => handleStopPropagation(e, photoNumbers.after)}
+              className="btn btn-circle bg-slate-100 hover:bg-scale-300 hover:scale-105 transition-transform"
+            >
+              ❯
+            </a>
+          </div>
+        </section>
 
-      {/*Photo modal*/}
-      <dialog ref={photoRef} id="errorModal" className="modal">
-        <div className="modal-box">
-          <div>
-            <img
-              src={photoInModal.url}
-              className="w-fit h-fit max-h-[65vh] m-auto"
-            ></img>
-            <p className="text-center text-xs">
-              <b>Photo:</b> {photoInModal.photographer}
-            </p>
-            <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-              <a
-                onClick={(e) => handleStopPropagation(e, photoNumbers.before)}
-                className="btn btn-circle bg-slate-100 hover:bg-scale-300 hover:scale-105 transition-transform"
-              >
-                ❮
-              </a>
-              <a
-                onClick={(e) => handleStopPropagation(e, photoNumbers.after)}
-                className="btn btn-circle bg-slate-100 hover:bg-scale-300 hover:scale-105 transition-transform"
-              >
-                ❯
-              </a>
+        {/*Photo modal*/}
+        <dialog ref={photoRef} id="errorModal" className="modal">
+          <div className="modal-box">
+            <div>
+              <img
+                src={photoInModal.url}
+                className="w-fit h-fit max-h-[65vh] m-auto"
+              ></img>
+              <p className="text-center text-xs">
+                <b>Photo:</b> {photoInModal.photographer}
+              </p>
+              <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+                <a
+                  onClick={(e) => handleStopPropagation(e, photoNumbers.before)}
+                  className="btn btn-circle bg-slate-100 hover:bg-scale-300 hover:scale-105 transition-transform"
+                >
+                  ❮
+                </a>
+                <a
+                  onClick={(e) => handleStopPropagation(e, photoNumbers.after)}
+                  className="btn btn-circle bg-slate-100 hover:bg-scale-300 hover:scale-105 transition-transform"
+                >
+                  ❯
+                </a>
+              </div>
+            </div>
+            <div className="modal-action h-0 m-0">
+              <form method="dialog">
+                <button>
+                  <IoMdCloseCircle className="absolute text-5xl bg-white text-red-500 top-0 right-0 rounded-full hover:text-red-300" />
+                </button>
+              </form>
             </div>
           </div>
-          <div className="modal-action h-0 m-0">
-            <form method="dialog">
-              <button>
-                <IoMdCloseCircle className="absolute text-5xl bg-white text-red-500 top-0 right-0 rounded-full hover:text-red-300" />
-              </button>
-            </form>
-          </div>
-        </div>
-      </dialog>
-    </>
-  );
+        </dialog>
+      </>
+    );
 }
 
 export default ImagesCarousel;

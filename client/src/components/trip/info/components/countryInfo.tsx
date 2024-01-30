@@ -1,8 +1,12 @@
 import { useAppContext } from "../../../../context/appContext";
 import AreaConverter from "../../../../logic/areaConverter";
+import CalcPopulation from "../../../../logic/calcPopulation";
 
 function CountryInfo(): JSX.Element {
   const { state } = useAppContext();
+
+  const areaNo: string = AreaConverter();
+  const populationNo: string = CalcPopulation();
 
   if (!state.data) return <div></div>;
   else
@@ -30,14 +34,10 @@ function CountryInfo(): JSX.Element {
             ))}
           </p>
           <p>
-            <b>Area:</b> {AreaConverter(Number(state.data.info.area))} km2
+            <b>Area:</b> {areaNo} km2
           </p>
           <p>
-            <b>Population:</b>{" "}
-            {state.data.info.population / 1000000 > 0.1
-              ? `${(state.data.info.population / 1000000).toFixed(2)}`
-              : `>0.1`}{" "}
-            Million
+            <b>Population:</b> {populationNo}
           </p>
           <p>
             <b>Currency:</b>{" "}

@@ -37,7 +37,7 @@ function ItineraryDetails(): JSX.Element {
                 <div className="flex justify-center">
                   <button
                     onClick={() => handleSeeMapClick(i)}
-                    className="btn btn-active text-l text-slate-700 bg-slate-300 w-full mt-2 hover:bg-slate-100"
+                    className="btn btn-active text-l text-slate-700 bg-slate-100 w-full mt-2 hover:bg-slate-300"
                   >
                     {window.innerWidth < 768 ? "See" : "Highlight"} on the map
                   </button>
