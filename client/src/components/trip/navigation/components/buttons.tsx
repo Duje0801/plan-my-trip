@@ -1,26 +1,28 @@
-import { Dispatch, SetStateAction } from "react";
 import { useNavigate } from "react-router-dom";
 import { Map } from "leaflet";
-import { useAppContext } from "../../../../context/context";
 import MapCentering from "../../../../logic/mapCentering";
+import { useAppContext } from "../../../../context/appContext";
+import { useTripContext } from "../../../../context/tripContext";
 import { ICoordsAndZoom } from "../../../../interfaces/coordsAndZoom";
 
 interface Props {
-  navOption: number;
   mapRef: React.RefObject<Map>;
-  setSelectedDay: Dispatch<SetStateAction<number>>;
 }
 
-function Buttons({ navOption, mapRef, setSelectedDay }: Props): JSX.Element {
+function Buttons({ mapRef }: Props): JSX.Element {
   const { dispatch } = useAppContext();
+  const { tripState, tripDispatch } = useTripContext();
 
   const navigate = useNavigate();
+
+  //Code from this file (buttons) is used in two cases: the first one is when the screen is narrow,
+  //in the 'navigation' file, and the second one is when the screen is wide, in the 'top' file.
 
   const centerCoordinates: ICoordsAndZoom = MapCentering();
 
   const clickResetMap = (): void => {
-    setSelectedDay(0);
-    if (mapRef.current) {
+    tripDispatch({ type: "SET_SELECTED_DAY", payload: 0 });
+    if (mapRef?.current) {
       mapRef.current.closePopup();
       mapRef.current.setView(
         centerCoordinates.avgCoordinates,
@@ -29,7 +31,7 @@ function Buttons({ navOption, mapRef, setSelectedDay }: Props): JSX.Element {
     }
   };
 
-  const handleClickHomePage = () => {
+  const handleClickHomePage = (): void => {
     dispatch({ type: "SET_INPUT_TEXT", payload: `` });
     dispatch({ type: "SET_DAYS", payload: 0 });
     dispatch({
@@ -40,28 +42,28 @@ function Buttons({ navOption, mapRef, setSelectedDay }: Props): JSX.Element {
   };
 
   return (
-    <div className="flex flex-row px-4">
-      {/*Go to home page button*/}
-      <div className="flex justify-center mt-4 mx-auto w-1/2">
+    <>
+      {/*Go to Home Page button*/}
+      <div className="flex justify-center my-4 mx-auto w-1/2 md:my-0 md:max-w-fit md:ml-auto md:mr-0">
         <button
           onClick={handleClickHomePage}
-          className="w-fit text-xl font-bold text-center mx-auto bg-slate-700 text-slate-100 py-1 px-4 rounded-lg"
+          className="w-fit text-xl font-bold text-center mx-auto bg-slate-700 text-slate-100 py-1 px-4 rounded-lg md:text-sm "
         >
           Home Page
         </button>
       </div>
-      {/*Reset map button*/}
-      {navOption === 2 ? (
-        <div className="flex justify-center mt-4 w-1/2">
+      {/*Reset Map button*/}
+      {tripState.navOption !== 1 ? (
+        <div className="flex justify-center my-4 w-1/2 md:my-0 md:max-w-fit md:ml-auto md:mr-0">
           <button
             onClick={clickResetMap}
-            className="w-fit text-xl font-bold text-center mx-auto bg-slate-700 text-slate-100 py-1 px-4 rounded-lg"
+            className="w-fit text-xl font-bold text-center mx-auto bg-slate-700 text-slate-100 py-1 px-4 rounded-lg md:text-sm"
           >
             Reset Map
           </button>
         </div>
       ) : null}
-    </div>
+    </>
   );
 }
 

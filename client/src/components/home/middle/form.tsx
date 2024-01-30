@@ -4,7 +4,7 @@ import ButtonsRow from "./rows/buttonsRow";
 import AdvSearch from "../modals/advSearch";
 import ErrorModal from "../modals/error";
 import { ICountryCode } from "../../../interfaces/countryCode";
-import { useAppContext } from "../../../context/context";
+import { useAppContext } from "../../../context/appContext";
 import axios from "axios";
 
 export default function Form(): JSX.Element {

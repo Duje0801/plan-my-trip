@@ -1,4 +1,4 @@
-import { useAppContext } from "../../../../context/context";
+import { useAppContext } from "../../../../context/appContext";
 
 function ImagesCarousel(): JSX.Element {
   const { state } = useAppContext();

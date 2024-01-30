@@ -1,4 +1,4 @@
-import { useAppContext } from "../context/context";
+import { useAppContext } from "../context/appContext";
 import TopMenu from "../components/home/topMenu/topMenu";
 import Middle from "../components/home/middle/middle";
 import Waiting from "./waiting";

@@ -1,4 +1,4 @@
-import { useAppContext } from "../../../../context/context";
+import { useAppContext } from "../../../../context/appContext";
 import AreaConverter from "../../../../logic/areaConverter";
 
 function CountryInfo(): JSX.Element {
@@ -7,7 +7,7 @@ function CountryInfo(): JSX.Element {
   if (!state.data) return <div></div>;
   else
     return (
-      <section className="flex flex-col gap-2 m-4 p-4 text-slate-100 bg-slate-700 rounded-lg relative">
+      <section className="flex flex-col gap-2 mx-4 mb-4 p-4 text-slate-100 bg-slate-700 rounded-lg relative">
         <p className="flex justify-between text-3xl">
           <b>{state.data.info.name.common}</b>
           <img

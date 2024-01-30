@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction } from "react";
-import { useAppContext } from "../../../../context/context";
+import { useAppContext } from "../../../../context/appContext";
 
 interface Props {
   setError: Dispatch<SetStateAction<string>>;

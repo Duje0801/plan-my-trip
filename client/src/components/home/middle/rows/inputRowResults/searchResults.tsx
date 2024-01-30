@@ -1,6 +1,6 @@
 import { useState, Dispatch, SetStateAction, useEffect } from "react";
 import { ICountryCode } from "../../../../../interfaces/countryCode";
-import { useAppContext } from "../../../../../context/context";
+import { useAppContext } from "../../../../../context/appContext";
 
 interface Props {
   countriesList: ICountryCode[];

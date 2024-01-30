@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useAppContext } from "../../../context/context";
+import { useAppContext } from "../../../context/appContext";
 import { countryParts } from "../../../data/countryParts";
 import { months } from "../../../data/months";
 

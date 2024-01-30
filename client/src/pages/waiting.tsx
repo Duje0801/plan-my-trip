@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAppContext } from "../context/context";
+import { useAppContext } from "../context/appContext";
 import { FetchString } from "../logic/fetchString";
 import waitingGif from "../img/waiting-img.gif";
 import errorGif from "../img/error-img.gif";

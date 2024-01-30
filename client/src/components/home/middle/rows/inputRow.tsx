@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction } from "react";
 import SearchResults from "./inputRowResults/searchResults";
-import { useAppContext } from "../../../../context/context";
+import { useAppContext } from "../../../../context/appContext";
 import { ICountryCode } from "../../../../interfaces/countryCode";
 
 interface Props {

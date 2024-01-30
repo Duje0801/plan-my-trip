@@ -1,4 +1,4 @@
-import { useAppContext } from "../context/context";
+import { useAppContext } from "../context/appContext";
 
 export function FetchString(): string {
   const { state } = useAppContext();
