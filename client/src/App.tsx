@@ -1,6 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./pages/home";
 import Trip from "./pages/trip";
+import { TripContextProvider } from "./context/tripContext";
 import { routes } from "./routes/routes";
 
 function App(): JSX.Element {
@@ -11,7 +12,11 @@ function App(): JSX.Element {
     },
     {
       path: routes.trip,
-      element: <Trip />,
+      element: (
+        <TripContextProvider>
+          <Trip />
+        </TripContextProvider>
+      ),
     },
     {
       path: `*`,
