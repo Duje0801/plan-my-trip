@@ -31,7 +31,7 @@ function InputRow({
       <input
         type="text"
         placeholder="I am traveling to ..."
-        className="input input-bordered bg-slate-100 text-l text-slate-700 m-0 text-black w-3/5 focus:bg-slate-300"
+        className="input input-bordered bg-slate-100 text-l text-slate-700 m-0 text-black w-3/5 xl:text-2xl focus:bg-slate-300"
         maxLength={30}
         value={state.inputText}
         onChange={(e) => checkOnlyLetters(e.target.value)}
@@ -43,12 +43,12 @@ function InputRow({
           setSelectedCountry={setSelectedCountry}
         />
       )}
-      <span className="text-l m-auto">for</span>
+      <span className="text-l m-auto xl:text-2xl">for</span>
       {/* Days Input */}
       <input
         type="number"
         placeholder="...days"
-        className="input input-bordered bg-slate-100 text-l text-slate-600 m-0 text-black w-1/4 focus:bg-slate-300"
+        className="input input-bordered bg-slate-100 text-l text-slate-600 m-0 text-black w-1/4 xl:text-2xl focus:bg-slate-300"
         min="2"
         max="31"
         value={state.days || ``}

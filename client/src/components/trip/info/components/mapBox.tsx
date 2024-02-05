@@ -51,10 +51,10 @@ function MapBox({ mapRef }: Props): JSX.Element {
             {" "}
             <Popup maxWidth={window.innerWidth < 768 ? 250 : 325}>
               <div>
-                <div className="text-base font-bold">
+                <div className="text-base font-bold xl:text-2xl">
                   Day {day.day} - {day.name}
                 </div>
-                <p className="text-sm text-justify">{day.description}</p>
+                <p className="text-sm text-justify xl:text-xl">{day.description}</p>
               </div>
             </Popup>{" "}
           </Marker>

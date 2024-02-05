@@ -56,7 +56,7 @@ export default function Form(): JSX.Element {
     <>
       <form
         onSubmit={handleSubmit}
-        className="flex flex-col gap-4 w-[80vw] md:w-[50vw] lg:w-[35vw]"
+        className="flex flex-col gap-4 w-[80vw] md:w-[50vw] lg:w-[35vw] xl:w-[30vw]"
       >
         {/* 1st Row */}
         <InputRow

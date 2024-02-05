@@ -13,13 +13,13 @@ function ErrorModal({ error, setError }: Props): JSX.Element {
 
   return (
     <div className="modal-box border-2 border-black border-solid rounded-lg">
-      <MdDangerous className="text-red-500 mx-auto text-6xl" />
-      <p className="text-xl text-red-500 font-bold mt-6">{error}</p>
+      <MdDangerous className="text-red-500 mx-auto text-6xl xl:text-8xl" />
+      <p className="text-xl text-red-500 font-bold mt-6 xl:text-3xl">{error}</p>
       <div className="modal-action">
         <form method="dialog">
           <button
             onClick={handleClick}
-            className="btn bg-red-500 text-white hover:bg-red-300 hover:border-red-500"
+            className="btn bg-red-500 text-white xl:text-xl hover:bg-red-300 hover:border-red-500"
           >
             Close
           </button>

@@ -42,20 +42,20 @@ export default function Waiting() {
       {" "}
       {!error ? (
         <div className="h-fit w-fit m-auto">
-          <img src={waitingGif} alt="waitingGif" className="h-28 mx-auto" />
-          <p className="text-3xl text-slate-700 font-bold text-center mt-6">
+          <img src={waitingGif} alt="waitingGif" className="h-28 mx-auto xl:h-52" />
+          <p className="text-3xl text-slate-700 font-bold text-center mt-6 xl:text-5xl">
             Generating Itinerary
           </p>
         </div>
       ) : (
         <div className="flex flex-col gap-6 h-fit w-fit m-auto">
-          <img src={errorGif} alt="waitingGif" className="h-28 mx-auto" />
-          <p className="text-3xl text-slate-700 font-bold text-center">
+          <img src={errorGif} alt="waitingGif" className="h-28 mx-auto xl:h-52" />
+          <p className="text-3xl text-slate-700 font-bold text-center xl:text-5xl">
             Error! {error}
           </p>
           <button
             onClick={handleGoBack}
-            className="btn bg-red-500 text-white border-0 w-fit mx-auto"
+            className="btn bg-red-500 text-white border-0 w-fit mx-auto xl:text-3xl"
           >
             Go Back
           </button>

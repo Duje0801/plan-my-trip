@@ -69,22 +69,22 @@ function AdvSearch(): JSX.Element {
 
   return (
     <div className="modal-box flex flex-col border-2 border-slate-700 rounded-lg">
-      <h1 className="text-2xl text-slate-700 font-bold mb-4">
+      <h1 className="text-2xl text-slate-700 font-bold mb-4 xl:text-4xl">
         Advanced Options
       </h1>
       <div className="flex flex-col gap-2">
         {/*Choosing the month for travel*/}
         <div className="flex flex-col gap-2 border-2 p-2 border-slate-700 rounded-lg">
-          <p className="text-slate-700 text-l">I will go in ...</p>
+          <p className="text-slate-700 text-l xl:text-2xl">I will go in ...</p>
           <select
             onChange={changeMonth}
-            className="select select-sm text-slate-700 w-2/3 mx-auto text-l border-2 border-slate-700 rounded-lg 
+            className="select select-sm text-slate-700 w-2/3 mx-auto text-l border-2 border-slate-700 rounded-lg xl:text-2xl
             focus:outline-none focus:border-2 focus:border-slate-700"
             defaultValue={state.advSearch.month || ""}
           >
             {months.map((month, i) => {
               return (
-                <option className="text-slate-700 text-l" key={i}>
+                <option className="text-slate-700 text-l xl:text-2xl" key={i}>
                   {month}
                 </option>
               );
@@ -94,31 +94,31 @@ function AdvSearch(): JSX.Element {
 
         {/*Choosing the part of the country I'm traveling to*/}
         <div className="flex flex-col gap-2 border-2 p-2 border-slate-700 rounded-lg">
-          <p className="text-slate-700 text-l">I want to visit...</p>
+          <p className="text-slate-700 text-l xl:text-2xl">I want to visit...</p>
           <select
             onChange={changeCountryPart}
-            className="select select-sm text-slate-700 w-2/3 mx-auto text-l border-2 border-slate-700 rounded-lg 
+            className="select select-sm text-slate-700 w-2/3 mx-auto text-l border-2 border-slate-700 rounded-lg xl:text-2xl
             focus:outline-none focus:border-2 focus:border-slate-700"
             defaultValue={state.advSearch.part || ""}
           >
             {countryParts.map((part, i) => {
               return (
-                <option className="text-slate-700 text-l" key={i}>
+                <option className="text-slate-700 text-l xl:text-2xl" key={i}>
                   {part}
                 </option>
               );
             })}
           </select>
-          <p className="text-slate-700 text-l">...part(s) of the country.</p>
+          <p className="text-slate-700 text-l xl:text-2xl">...part(s) of the country.</p>
         </div>
 
         {/*Choosing what to base the trip around*/}
         <div className="border-2 p-2 border-slate-700 rounded-lg">
-          <p className="text-slate-700 text-l">
+          <p className="text-slate-700 text-l xl:text-2xl">
             I want my trip to be based on...
           </p>
           <div className="flex gap-6 my-2">
-            <p className="text-slate-700 text-l w-1/3">Nature</p>
+            <p className="text-slate-700 text-l w-1/3 xl:text-2xl">Nature</p>
             <input
               type="range"
               min={0}
@@ -130,7 +130,7 @@ function AdvSearch(): JSX.Element {
             />
           </div>
           <div className="flex gap-6 my-2">
-            <p className="text-slate-700 text-l w-1/3">History</p>
+            <p className="text-slate-700 text-l w-1/3 xl:text-2xl">History</p>
             <input
               type="range"
               min={0}
@@ -142,7 +142,7 @@ function AdvSearch(): JSX.Element {
             />
           </div>
           <div className="flex gap-6 my-2">
-            <p className="text-slate-700 text-l w-1/3">Cities</p>
+            <p className="text-slate-700 text-l w-1/3 xl:text-2xl">Cities</p>
             <input
               type="range"
               min={0}
@@ -153,7 +153,7 @@ function AdvSearch(): JSX.Element {
               onChange={changeCitiesValue}
             />
           </div>{" "}
-          <p className="text-xs text-slate-700">
+          <p className="text-xs text-slate-700 xl:text-base">
             *Only one category can be at maximum
           </p>
         </div>
@@ -164,7 +164,7 @@ function AdvSearch(): JSX.Element {
         <div className="flex justify-between mt-2">
           <button
             onClick={handleClickSave}
-            className="btn btn-active text-l bg-slate-300 ml-auto w-fit hover:bg-slate-100"
+            className="btn btn-active text-l bg-slate-300 ml-auto w-fit xl:text-2xl hover:bg-slate-100"
           >
             Save
           </button>

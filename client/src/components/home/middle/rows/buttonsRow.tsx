@@ -24,7 +24,7 @@ function ButtonsRow({ setError, openAdvSearchModal }: Props): JSX.Element {
       {/* Advanced Search Button */}
       <button
         type="button"
-        className="btn btn-active text-l bg-slate-300 w-1/2 hover:bg-slate-100"
+        className="btn btn-active text-l bg-slate-300 w-1/2 xl:text-2xl hover:bg-slate-100"
         onClick={openAdvSearchModal}
       >
         Advanced Search
@@ -33,7 +33,7 @@ function ButtonsRow({ setError, openAdvSearchModal }: Props): JSX.Element {
       <button
         type="button"
         onClick={handleClickSubmit}
-        className="btn btn-active text-l bg-slate-300 w-2/5 hover:bg-slate-100"
+        className="btn btn-active text-l bg-slate-300 w-2/5 xl:text-2xl hover:bg-slate-100"
       >
         Submit
       </button>

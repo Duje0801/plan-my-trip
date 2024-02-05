@@ -20,7 +20,7 @@ export default function TopMenu(): JSX.Element {
 
   return (
     <>
-      <ul className="flex flex-row absolute text-xl top-0 right-2 gap-2">
+      <ul className="flex flex-row absolute text-xl top-0 right-2 gap-2 xl:text-3xl">
         <li
           onClick={openAboutModal}
           className="text-slate-700 hover:text-slate-300 md:cursor-pointer"

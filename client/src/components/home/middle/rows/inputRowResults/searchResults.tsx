@@ -43,7 +43,7 @@ export default function SearchResults({
           return (
             <div
               onClick={(e) => handleClickCountry(country)}
-              className="btn join-item w-48 text-slate-700 bg-slate-100 animate-none hover:bg-slate-300"
+              className="btn join-item w-48 text-slate-700 bg-slate-100 animate-none xl:text-xl hover:bg-slate-300"
               key={i}
             >
               {country.name.length < 20
@@ -60,14 +60,14 @@ export default function SearchResults({
           <button
             type="button"
             onClick={() => handleClickPage(-1)}
-            className="btn bg-slate-300 text-slate-700 w-1/2 rounded-t-none rounded-br-none hover:bg-slate-100"
+            className="btn bg-slate-300 text-slate-700 w-1/2 rounded-t-none rounded-br-none xl:text-xl hover:bg-slate-100"
           >
             Previous
           </button>
           <button
             type="button"
             onClick={() => handleClickPage(1)}
-            className="btn bg-slate-300 text-slate-700 w-1/2 rounded-t-none rounded-bl-none hover:bg-slate-100"
+            className="btn bg-slate-300 text-slate-700 w-1/2 rounded-t-none rounded-bl-none xl:text-xl hover:bg-slate-100"
           >
             Next
           </button>

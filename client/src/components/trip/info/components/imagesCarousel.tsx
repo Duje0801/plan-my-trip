@@ -48,22 +48,22 @@ function ImagesCarousel(): JSX.Element {
           <img src={photoInModal.url} className="w-auto h-full m-auto" />
           <MdOutlineZoomOutMap
             onClick={() => handlePhotoClick()}
-            className="absolute top-2 right-2 text-3xl bg-slate-100 rounded-md cursor-pointer hover:bg-slate-300 
+            className="absolute top-2 right-2 text-3xl bg-slate-100 rounded-md cursor-pointer xl:text-5xl hover:bg-slate-300 
               hover:scale-105 transition-transform"
           />
-          <div className="absolute bottom-2 left-2 text-slate-100 text-[0.5rem]">
+          <div className="absolute bottom-2 left-2 text-slate-100 text-[0.5rem] xl:text-xl">
             {photoInModal.photographer}
           </div>
           <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
             <a
               onClick={(e) => handleStopPropagation(e, photoNumbers.before)}
-              className="btn btn-circle bg-slate-100 hover:bg-scale-300 hover:scale-105 transition-transform"
+              className="btn btn-circle bg-slate-100 xl:text-4xl xl:h-16 xl:w-16 hover:bg-scale-300 hover:scale-105 transition-transform"
             >
               ❮
             </a>
             <a
               onClick={(e) => handleStopPropagation(e, photoNumbers.after)}
-              className="btn btn-circle bg-slate-100 hover:bg-scale-300 hover:scale-105 transition-transform"
+              className="btn btn-circle bg-slate-100 xl:text-4xl xl:h-16 xl:w-16 hover:bg-scale-300 hover:scale-105 transition-transform"
             >
               ❯
             </a>
@@ -72,35 +72,33 @@ function ImagesCarousel(): JSX.Element {
 
         {/*Photo modal*/}
         <dialog ref={photoRef} id="errorModal" className="modal">
-          <div className="modal-box">
-            <div>
-              <img
-                src={photoInModal.url}
-                className="w-fit h-fit max-h-[65vh] m-auto"
-              ></img>
-              <p className="text-center text-xs">
-                <b>Photo:</b> {photoInModal.photographer}
-              </p>
-              <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                <a
-                  onClick={(e) => handleStopPropagation(e, photoNumbers.before)}
-                  className="btn btn-circle bg-slate-100 hover:bg-scale-300 hover:scale-105 transition-transform"
-                >
-                  ❮
-                </a>
-                <a
-                  onClick={(e) => handleStopPropagation(e, photoNumbers.after)}
-                  className="btn btn-circle bg-slate-100 hover:bg-scale-300 hover:scale-105 transition-transform"
-                >
-                  ❯
-                </a>
-              </div>
+          <div className="modal-box xl:min-w-fit">
+            <img
+              src={photoInModal.url}
+              className="m-auto max-h-[70vh] xl:min-h-[70vh]"
+            ></img>
+            <p className="text-center text-xs xl:text-xl">
+              <b>Photo:</b> {photoInModal.photographer}
+            </p>
+            <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+              <a
+                onClick={(e) => handleStopPropagation(e, photoNumbers.before)}
+                className="btn btn-circle bg-slate-100 transition-transform xl:h-24 xl:w-24 xl:text-6xl xl:ml-6 hover:bg-scale-300 hover:scale-105"
+              >
+                ❮
+              </a>
+              <a
+                onClick={(e) => handleStopPropagation(e, photoNumbers.after)}
+                className="btn btn-circle bg-slate-100 transition-transform xl:h-24 xl:w-24 xl:text-6xl xl:mr-6 hover:bg-scale-300 hover:scale-105"
+              >
+                ❯
+              </a>
             </div>
             <div className="modal-action h-0 m-0">
               <form method="dialog">
                 <button>
-                  <IoMdCloseCircle className="absolute text-5xl bg-white text-red-500 top-0 right-0 rounded-full hover:text-red-300" />
-                </button>
+                  <IoMdCloseCircle className="absolute text-5xl bg-white text-red-500 top-0 right-0 rounded-full xl:h-24 xl:w-24 xl:text-6xl hover:text-red-300" />
+                </button> 
               </form>
             </div>
           </div>

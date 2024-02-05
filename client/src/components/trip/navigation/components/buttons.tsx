@@ -63,7 +63,7 @@ function Buttons({ mapRef }: Props): JSX.Element {
       <div className="flex justify-center my-4 mx-auto w-1/2 md:my-0 md:max-w-fit md:ml-auto md:mr-0">
         <button
           onClick={handleOpenModal}
-          className="w-fit text-xl font-bold text-center mx-auto bg-slate-700 text-slate-100 py-1 px-4 rounded-lg hover:text-slate-300 md:text-sm"
+          className="w-fit text-xl font-bold text-center mx-auto bg-slate-700 text-slate-100 py-1 px-4 rounded-lg md:text-sm xl:text-4xl hover:text-slate-300"
         >
           Home Page
         </button>
@@ -73,7 +73,7 @@ function Buttons({ mapRef }: Props): JSX.Element {
         <div className="flex justify-center my-4 w-1/2 md:my-0 md:max-w-fit md:ml-auto md:mr-0">
           <button
             onClick={clickResetMap}
-            className="w-fit text-xl font-bold text-center mx-auto bg-slate-700 text-slate-100 py-1 px-4 rounded-lg hover:text-slate-300 md:text-sm"
+            className="w-fit text-xl font-bold text-center mx-auto bg-slate-700 text-slate-100 py-1 px-4 rounded-lg md:text-sm xl:text-4xl hover:text-slate-300"
           >
             Reset Map
           </button>
@@ -81,8 +81,8 @@ function Buttons({ mapRef }: Props): JSX.Element {
       ) : null}
       <dialog ref={modalRef} id="toHomeModal" className="modal">
         <div className="modal-box">
-          <BsFillQuestionCircleFill className="text-6xl mx-auto" />
-          <p className="py-4 text-xl font-bold text-center">
+          <BsFillQuestionCircleFill className="text-6xl mx-auto xl:text-8xl" />
+          <p className="py-4 text-xl font-bold text-center xl:text-3xl">
             Are you sure you want to go to the home page?
           </p>
           <div className="modal-action">
@@ -90,14 +90,14 @@ function Buttons({ mapRef }: Props): JSX.Element {
               {/* if there is a button in form, it will close the modal */}
               <button
                 onClick={() => answerHomePageYes()}
-                className="btn bg-red-500 text-white hover:bg-red-300 "
+                className="btn bg-red-500 text-white hover:bg-red-300 xl:text-xl"
               >
                 Yes
               </button>
             </form>
             <button
               onClick={() => answerHomePageNo()}
-              className="btn bg-slate-300 text-slate-700 hover:bg-slate-100"
+              className="btn bg-slate-300 text-slate-700 hover:bg-slate-100 xl:text-xl"
             >
               No
             </button>
