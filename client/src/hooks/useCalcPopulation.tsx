@@ -1,6 +1,6 @@
 import { useAppContext } from "../context/appContext";
 
-function CalcPopulation(): string {
+function useCalcPopulation(): string {
   const { state } = useAppContext();
 
   if (state.data) {
@@ -15,4 +15,4 @@ function CalcPopulation(): string {
   } else return ``;
 }
 
-export default CalcPopulation;
+export { useCalcPopulation };

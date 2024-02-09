@@ -1,6 +1,6 @@
 import { useAppContext } from "../context/appContext";
 
-function AreaConverter(): string {
+function useAreaConverter(): string {
   const { state } = useAppContext();
 
   let toReturn: string = ``;
@@ -17,4 +17,4 @@ function AreaConverter(): string {
   return toReturn;
 }
 
-export default AreaConverter;
+export { useAreaConverter };

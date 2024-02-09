@@ -1,7 +1,7 @@
 import { useAppContext } from "../context/appContext";
 import { ICoordsAndZoom } from "../interfaces/coordsAndZoom";
 
-function MapCentering(): ICoordsAndZoom {
+function useMapCentering(): ICoordsAndZoom {
   const { state } = useAppContext();
 
   let avgCoordinates: [number, number] = [0, 0];
@@ -34,4 +34,4 @@ function MapCentering(): ICoordsAndZoom {
   return { avgCoordinates, zoom };
 }
 
-export default MapCentering;
+export { useMapCentering };

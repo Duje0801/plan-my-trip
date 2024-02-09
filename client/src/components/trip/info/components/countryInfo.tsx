@@ -1,12 +1,12 @@
 import { useAppContext } from "../../../../context/appContext";
-import AreaConverter from "../../../../logic/areaConverter";
-import CalcPopulation from "../../../../logic/calcPopulation";
+import { useAreaConverter } from "../../../../hooks/useAreaConverter";
+import { useCalcPopulation } from "../../../../hooks/useCalcPopulation";
 
 function CountryInfo(): JSX.Element {
   const { state } = useAppContext();
 
-  const areaNo: string = AreaConverter();
-  const populationNo: string = CalcPopulation();
+  const areaNo: string = useAreaConverter();
+  const populationNo: string = useCalcPopulation();
 
   if (!state.data) return <div></div>;
   else

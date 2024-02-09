@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import { useAppContext } from "../../../../context/appContext";
 import { IPhoto } from "../../../../interfaces/tripData";
+import { useCalcPhotosNumber } from "../../../../hooks/useCalcPhotosNumber";
 import { MdOutlineZoomOutMap } from "react-icons/md";
 import { IoMdCloseCircle } from "react-icons/io";
-import CalcPhotosNumber from "../../../../logic/calcPhotosNumber";
 
 function ImagesCarousel(): JSX.Element {
   const [photoInModal, setPhotoInModal] = useState<IPhoto>({
@@ -17,7 +17,7 @@ function ImagesCarousel(): JSX.Element {
   const photoRef = useRef<HTMLDialogElement | null>(null);
 
   //Calculate the number of images before and after the one displayed on the screen
-  const photoNumbers = CalcPhotosNumber(photoNo);
+  const photoNumbers = useCalcPhotosNumber(photoNo);
 
   useEffect(() => {
     setPhotoInModal(state.data?.photo[0]!);
@@ -98,7 +98,7 @@ function ImagesCarousel(): JSX.Element {
               <form method="dialog">
                 <button>
                   <IoMdCloseCircle className="absolute text-5xl bg-white text-red-500 top-0 right-0 rounded-full xl:h-24 xl:w-24 xl:text-6xl hover:text-red-300" />
-                </button> 
+                </button>
               </form>
             </div>
           </div>

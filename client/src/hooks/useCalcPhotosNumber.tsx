@@ -1,7 +1,7 @@
 import { useAppContext } from "../context/appContext";
 import { IPhotosNumbers } from "../interfaces/photosNumbers";
 
-function CalcPhotosNumber(photoNo: number): IPhotosNumbers {
+function useCalcPhotosNumber(photoNo: number): IPhotosNumbers {
   const { state } = useAppContext();
 
   const before: number =
@@ -12,4 +12,4 @@ function CalcPhotosNumber(photoNo: number): IPhotosNumbers {
   return { before, after };
 }
 
-export default CalcPhotosNumber;
+export { useCalcPhotosNumber };

@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { MapContainer, TileLayer, Popup, Marker } from "react-leaflet";
 import L, { Map } from "leaflet";
-import MapCentering from "../../../../logic/mapCentering";
+import { useMapCentering } from "../../../../hooks/useMapCentering";
 import { useAppContext } from "../../../../context/appContext";
 import { useTripContext } from "../../../../context/tripContext";
 import { ICoordsAndZoom } from "../../../../interfaces/coordsAndZoom";
@@ -13,7 +13,7 @@ function MapBox(): JSX.Element {
 
   const mapRef = useRef<Map>(null);
 
-  const centerCoordinates: ICoordsAndZoom = MapCentering();
+  const centerCoordinates: ICoordsAndZoom = useMapCentering();
 
   useEffect(() => {
     if (mapRef?.current) {

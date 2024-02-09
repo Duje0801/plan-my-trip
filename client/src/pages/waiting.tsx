@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppContext } from "../context/appContext";
-import { FetchString } from "../logic/fetchString";
+import { useFetchString } from "../hooks/useFetchString";
 import waitingGif from "../img/waiting-img.gif";
 import errorGif from "../img/error-img.gif";
 import axios from "axios";
@@ -13,7 +13,7 @@ export default function Waiting() {
 
   const navigate = useNavigate();
 
-  const fetchString: string = FetchString();
+  const fetchString: string = useFetchString();
 
   useEffect(() => {
     function fetchData() {
@@ -42,14 +42,22 @@ export default function Waiting() {
       {" "}
       {!error ? (
         <div className="h-fit w-fit m-auto">
-          <img src={waitingGif} alt="waitingGif" className="h-28 mx-auto xl:h-52" />
+          <img
+            src={waitingGif}
+            alt="waitingGif"
+            className="h-28 mx-auto xl:h-52"
+          />
           <p className="text-3xl text-slate-700 font-bold text-center mt-6 xl:text-5xl">
             Generating Itinerary
           </p>
         </div>
       ) : (
         <div className="flex flex-col gap-6 h-fit w-fit m-auto">
-          <img src={errorGif} alt="waitingGif" className="h-28 mx-auto xl:h-52" />
+          <img
+            src={errorGif}
+            alt="waitingGif"
+            className="h-28 mx-auto xl:h-52"
+          />
           <p className="text-3xl text-slate-700 font-bold text-center xl:text-5xl">
             Error! {error}
           </p>

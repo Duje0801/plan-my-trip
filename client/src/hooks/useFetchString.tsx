@@ -1,6 +1,6 @@
 import { useAppContext } from "../context/appContext";
 
-export function FetchString(): string {
+function useFetchString(): string {
   const { state } = useAppContext();
 
   return `https://plan-my-tripappts-production.up.railway.app/api/trip/?country=${
@@ -13,3 +13,5 @@ export function FetchString(): string {
     state.advSearch.cities > 0 ? `&cities=${state.advSearch.cities}` : ``
   }`;
 }
+
+export { useFetchString };
