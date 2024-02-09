@@ -1,6 +1,5 @@
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Map } from "leaflet";
 import { useAppContext } from "../context/appContext";
 import { useTripContext } from "../context/tripContext";
 import Navigation from "../components/trip/navigation/navigation";
@@ -10,9 +9,6 @@ function Trip(): JSX.Element {
   const { state } = useAppContext();
 
   const navigate = useNavigate();
-
-  //This is a map reference, the code for the map is in the MapBox file
-  const mapRef = useRef<Map>(null);
 
   const { tripDispatch } = useTripContext();
 
@@ -28,8 +24,8 @@ function Trip(): JSX.Element {
   else
     return (
       <div className="bg-slate-100 pb-2 min-h-[100vh]">
-        <Navigation mapRef={mapRef} />
-        <Main mapRef={mapRef} />
+        <Navigation />
+        <Main />
       </div>
     );
 }

@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import { MapContainer, TileLayer, Popup, Marker } from "react-leaflet";
 import L, { Map } from "leaflet";
 import MapCentering from "../../../../logic/mapCentering";
@@ -6,15 +7,23 @@ import { useTripContext } from "../../../../context/tripContext";
 import { ICoordsAndZoom } from "../../../../interfaces/coordsAndZoom";
 import "leaflet/dist/leaflet.css";
 
-interface Props {
-  mapRef: React.RefObject<Map>;
-}
-
-function MapBox({ mapRef }: Props): JSX.Element {
+function MapBox(): JSX.Element {
   const { state } = useAppContext();
   const { tripState, tripDispatch } = useTripContext();
 
+  const mapRef = useRef<Map>(null);
+
   const centerCoordinates: ICoordsAndZoom = MapCentering();
+
+  useEffect(() => {
+    if (mapRef?.current) {
+      mapRef.current.closePopup();
+      mapRef.current.setView(
+        centerCoordinates.avgCoordinates,
+        centerCoordinates.zoom
+      );
+    }
+  }, [tripState.resetMap]);
 
   const handleMarkerClick = (i: number): void => {
     tripDispatch({ type: "SET_SELECTED_DAY", payload: i + 1 });
@@ -54,7 +63,9 @@ function MapBox({ mapRef }: Props): JSX.Element {
                 <div className="text-base font-bold xl:text-2xl">
                   Day {day.day} - {day.name}
                 </div>
-                <p className="text-sm text-justify xl:text-xl">{day.description}</p>
+                <p className="text-sm text-justify xl:text-xl">
+                  {day.description}
+                </p>
               </div>
             </Popup>{" "}
           </Marker>

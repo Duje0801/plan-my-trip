@@ -1,17 +1,10 @@
 import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import { Map } from "leaflet";
-import MapCentering from "../../../../logic/mapCentering";
 import { useAppContext } from "../../../../context/appContext";
 import { useTripContext } from "../../../../context/tripContext";
-import { ICoordsAndZoom } from "../../../../interfaces/coordsAndZoom";
 import { BsFillQuestionCircleFill } from "react-icons/bs";
 
-interface Props {
-  mapRef: React.RefObject<Map>;
-}
-
-function Buttons({ mapRef }: Props): JSX.Element {
+function Buttons(): JSX.Element {
   const { dispatch } = useAppContext();
   const { tripState, tripDispatch } = useTripContext();
 
@@ -22,8 +15,6 @@ function Buttons({ mapRef }: Props): JSX.Element {
   //Code from this file (buttons) is used in two cases: the first one is when the screen is narrow,
   //in the 'navigation' file, and the second one is when the screen is wide, in the 'top' file.
 
-  const centerCoordinates: ICoordsAndZoom = MapCentering();
-
   const handleOpenModal = (): void => {
     if (modalRef.current) {
       modalRef.current.showModal();
@@ -32,13 +23,10 @@ function Buttons({ mapRef }: Props): JSX.Element {
 
   const clickResetMap = (): void => {
     tripDispatch({ type: "SET_SELECTED_DAY", payload: 0 });
-    if (mapRef?.current) {
-      mapRef.current.closePopup();
-      mapRef.current.setView(
-        centerCoordinates.avgCoordinates,
-        centerCoordinates.zoom
-      );
-    }
+    tripDispatch({
+      type: "SET_RESETMAP",
+      payload: tripState.resetMap === true ? false : true,
+    });
   };
 
   const answerHomePageYes = (): void => {

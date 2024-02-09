@@ -9,15 +9,18 @@ import React, { createContext, useContext, useReducer, ReactNode } from "react";
 interface AppState {
   navOption: number;
   selectedDay: number;
+  resetMap: boolean;
 }
 
 type AppActions =
   | { type: "SET_NAV_OPTION"; payload: number }
-  | { type: "SET_SELECTED_DAY"; payload: number };
+  | { type: "SET_SELECTED_DAY"; payload: number }
+  | { type: "SET_RESETMAP"; payload: boolean };
 
 const initialState: AppState = {
   navOption: 0,
   selectedDay: -1,
+  resetMap: true,
 };
 
 const TripContext = createContext<
@@ -34,6 +37,8 @@ const appReducer = (state: AppState, action: AppActions): AppState => {
       return { ...state, navOption: action.payload };
     case "SET_SELECTED_DAY":
       return { ...state, selectedDay: action.payload };
+    case "SET_RESETMAP":
+      return { ...state, resetMap: action.payload };
     default:
       return state;
   }

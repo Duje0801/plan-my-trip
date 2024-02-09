@@ -1,16 +1,11 @@
 import { useEffect } from "react";
-import { Map } from "leaflet";
 import { useTripContext } from "../../../context/tripContext";
 import CountryInfo from "./components/countryInfo";
 import ImagesCarousel from "./components/imagesCarousel";
 import ItineraryDetails from "./components/itineraryDetails";
 import MapBox from "./components/mapBox";
 
-interface Props {
-  mapRef: React.RefObject<Map>;
-}
-
-function Main({ mapRef }: Props) {
+function Main() {
   const { tripState, tripDispatch } = useTripContext();
 
   //The useEffect is necessary because if the map isn't immediately displayed on the screen,
@@ -41,7 +36,7 @@ function Main({ mapRef }: Props) {
       )}
       {tripState.navOption !== 1 && (
         <section className="md:w-2/3 md:pb-6">
-          <MapBox mapRef={mapRef} />
+          <MapBox />
         </section>
       )}
     </main>

@@ -1,12 +1,7 @@
-import { Map } from "leaflet";
 import Buttons from "./buttons";
 import logo from "../../../../img/logo.png";
 
-interface Props {
-  mapRef: React.RefObject<Map>;
-}
-
-function Top({ mapRef }: Props) {
+function Top() {
   return (
     <section className="flex overflow-hidden p-4 h-[10vh] md:flex md:flex-row md:justify-around md:h-24 xl:h-[20vh]">
       {" "}
@@ -17,7 +12,7 @@ function Top({ mapRef }: Props) {
         PLAN MY TRIP
       </p>
       <div className="hidden md:visible md:w-1/3 md:flex md:flex-col md:my-auto md:gap-2">
-        <Buttons mapRef={mapRef} />
+        <Buttons />
       </div>
     </section>
   );
