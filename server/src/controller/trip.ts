@@ -13,6 +13,7 @@ import { ICountryCode } from "../interfaces/forFunctions/countryCode";
 import { IItinerary } from "../interfaces/data/itinerary";
 import { IPhoto } from "../interfaces/data/photo";
 import { ICountryDataFun } from "../interfaces/forFunctions/countryDataFun";
+import { IErrorObject } from "../interfaces/forFunctions/errorObject";
 
 //Dotenv
 import dotenv from "dotenv";
@@ -29,20 +30,22 @@ export default async function trip(req: Request, res: Response) {
     const cities: number = Number(req.query.cities || 0);
 
     //1. Checking whether the requested country exists in the database
-    const checkCountryExist: ICountryCode | null =
-      checkCountryExistFun(country);
+    const checkCountryExist: ICountryCode | null = checkCountryExistFun(
+      country,
+    );
 
     if (!checkCountryExist) {
       throw new Error("Can't find country in database.");
     }
 
     //2. Checking whether the number of days is below the minimum or above the maximum
-    if (!days || days < 2 || days > 31)
+    if (!days || days < 2 || days > 31) {
       throw new Error("Allowed days number is between 2 and 31");
+    }
 
     //3. Obtaining general information about the country
     const countryData: ICountryDataFun = await countryDataFun(
-      checkCountryExist
+      checkCountryExist,
     );
 
     if (!countryData.data && countryData.error) {
@@ -57,7 +60,7 @@ export default async function trip(req: Request, res: Response) {
       part,
       nature,
       history,
-      cities
+      cities,
     );
 
     const itinerary: IItinerary = await generateItineraryFun(question);
@@ -81,7 +84,7 @@ export default async function trip(req: Request, res: Response) {
       },
     });
   } catch (error: any) {
-    let errorObj = {};
+    let errorObject: IErrorObject = {};
 
     //AI often makes mistakes in formatting the response.
     //If such an error occurs, the trip function is restarted.
@@ -92,16 +95,16 @@ export default async function trip(req: Request, res: Response) {
       if (
         error.message === "Allowed days number is between 2 and 31" ||
         error.message === "Can't find country in database."
-      )
-        errorObj = { message: error.message };
-      else
-        errorObj = {
+      ) {
+        errorObject = { message: error.message };
+      } else {
+        errorObject = {
           message: "Can't create itinerary. Please try again later.",
         };
-    }
-    //Error handling if we are in development mode
+      }
+    } //Error handling if we are in development mode
     else {
-      errorObj = {
+      errorObject = {
         message: error.message,
         stack: error.stack,
         name: error.name,
@@ -110,7 +113,7 @@ export default async function trip(req: Request, res: Response) {
     //Error response
     res.status(404).json({
       status: `fail`,
-      error: errorObj,
+      error: errorObject,
     });
   }
 }

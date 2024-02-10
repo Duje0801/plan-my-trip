@@ -7,6 +7,7 @@ import cors from "cors";
 //Routes imports
 import search from "./controller/search";
 import trip from "./controller/trip";
+import wrongUrl from "./controller/wrongUrl";
 
 const app = express();
 app.use(express.json({ limit: `10kb` }));
@@ -20,7 +21,8 @@ app.use(helmet());
 const limiter = rateLimit({
   max: 100,
   windowMs: 3600000,
-  message: `Too many requests from this IP address, please try again in 60 minutes.`,
+  message:
+    `Too many requests from this IP address, please try again in 60 minutes.`,
 });
 app.use(limiter);
 
@@ -30,6 +32,9 @@ app.use(cors());
 //Routes
 app.get(`/api/search/:id`, search);
 app.get(`/api/trip/`, trip);
+
+//If route does not exist
+app.all(`*`, wrongUrl);
 
 //Connecting to server
 const PORT = process.env.PORT;
