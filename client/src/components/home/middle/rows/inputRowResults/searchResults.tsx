@@ -60,14 +60,14 @@ export default function SearchResults({
           <button
             type="button"
             onClick={() => handleClickPage(-1)}
-            className="btn bg-slate-300 text-slate-700 w-1/2 rounded-t-none rounded-br-none xl:text-xl hover:bg-slate-100"
+            className="btn bg-slate-300 text-slate-700 w-1/2 rounded-t-none rounded-br-none xl:text-xl btnNoAnimation hover:bg-slate-100"
           >
             Previous
           </button>
           <button
             type="button"
             onClick={() => handleClickPage(1)}
-            className="btn bg-slate-300 text-slate-700 w-1/2 rounded-t-none rounded-bl-none xl:text-xl hover:bg-slate-100"
+            className="btn bg-slate-300 text-slate-700 w-1/2 rounded-t-none rounded-bl-none xl:text-xl btnNoAnimation hover:bg-slate-100"
           >
             Next
           </button>

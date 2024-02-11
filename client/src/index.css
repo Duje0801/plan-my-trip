@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* In DaisyUI, upon clicking a button, an animation automatically occurs. However, for some buttons, 
+I don't want the animation to occur, so I've blocked it for them.*/
+.btnNoAnimation {
+  @apply no-animation;
+}
